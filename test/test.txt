@@ -1,0 +1,32 @@
+AMAZONAS: polygon22
+ANCASH: path20
+APURIMAC: polygon10
+AREQUIPA:path9
+AYACUCHO: path10
+CAJAMARCA: path24
+CALLAO
+CUSCO: path8
+HUANCAVELICA: polygon13
+HUANUCO: path13
+ICA: polygon14
+JUNIN:polygon11
+LA LIBERTAD: polygon21
+LAMBAYEQUE:polygon26
+LIMA: polygon16
+LORETO: path7
+MADRE DE DIOS: path1
+MOQUEGUA: polygon8
+PASCO:polygon12
+PIURA:polygon27
+PUNO: path2
+SAN MARTIN: polygon15
+TACNA: polygon2
+TUMBES: polygon28
+UCAYALI: polygon9
+
+
+Detalle_1
+XMLID_9_
+
+Provincia de Lima: path73
+Callao: polygon73 y path74
