@@ -11,7 +11,7 @@ class App:
         self.master.title('Proyecto - Complejidad Algoritmica - (2023 - 2) - Grupo 5 - Seccion WS6D')
 
         #Layout
-        self.master.geometry("1280x720")
+        self.master.geometry("880x880")
         self.master.config(background='grey')
     
         self.MapClass = Map.Map(self.master)
