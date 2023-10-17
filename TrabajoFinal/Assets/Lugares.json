@@ -1,0 +1,106 @@
+{"Lugares": 
+    [
+        {
+            "Nombre": "Amazonas", 
+            "id": "polygon22"
+        },
+        {
+            "Nombre": "Ancash",
+            "id": "path20"
+        },
+        {
+            "Nombre": "Apurimac",
+            "id": "polygon10"
+        },
+        {
+            "Nombre": "Arequipa",
+            "id": "path9"
+        },
+        {
+            "Nombre": "Ayacucho",
+            "id": "path10"
+        },
+        {
+            "Nombre": "Cajamarca",
+            "id": "path24"
+        },
+        {
+            "Nombre": "Cusco",
+            "id": "path8"
+        },
+        {
+            "Nombre": "Huancavelica",
+            "id": "polygon13"
+        },
+        {
+            "Nombre": "Huanuco",
+            "id": "path13"
+        },
+        {
+            "Nombre": "Ica",
+            "id": "polygon14"
+        },
+        {
+            "Nombre": "Junin",
+            "id": "polygon11"
+        },{
+            "Nombre": "La libertad",
+            "id": "polygon21"
+        },
+        {
+            "Nombre": "Lambayeque",
+            "id": "polygon26"
+        },{
+            "Nombre": "Lima",
+            "id": "polygon16"
+        },
+        {
+            "Nombre": "Loreto",
+            "id": "path7"
+        },{
+            "Nombre": "Madre de dios",
+            "id": "path1"
+        },
+        {
+            "Nombre": "Moquegua",
+            "id": "polygon8"
+        },
+        {
+            "Nombre": "Pasco",
+            "id": "polygon12"
+        },
+        {
+            "Nombre": "Piura",
+            "id": "polygon27"
+        },
+        {
+            "Nombre": "Puno",
+            "id": "path2"
+        },
+        {
+            "Nombre": "San Martin",
+            "id": "polygon15"
+        },
+        {
+            "Nombre": "Tacna",
+            "id": "polygon2"
+        },
+        {
+            "Nombre": "Tumbes",
+            "id": "polygon2"
+        },
+        {
+            "Nombre": "Ucayali",
+            "id": "polygon9"
+        },
+        {
+            "Nombre": "Provincia de Lima",
+            "id": "path73"
+        },
+        {
+            "Nombre": "Callao",
+            "id": ["polygon73", "path74"]
+        }
+    ]
+
+}

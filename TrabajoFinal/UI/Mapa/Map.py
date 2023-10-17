@@ -42,3 +42,10 @@ class Map:
         label1 = tk.Label(self.Screen, image=photo_image)
         label1.image = photo_image
         label1.pack(expand = True, fill = tk.BOTH)
+        
+class Departamento:
+    
+    def __init__(self, nombre, id):
+        self.nombre = nombre
+        self.id = id
+        
