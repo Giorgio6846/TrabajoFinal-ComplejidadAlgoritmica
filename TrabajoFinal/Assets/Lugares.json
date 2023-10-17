@@ -2,105 +2,133 @@
     [
         {
             "Nombre": "Amazonas", 
-            "id": "polygon22"
+            "id": "polygon22",
+            "color": ""
         },
         {
             "Nombre": "Ancash",
-            "id": "path20"
+            "id": "path20",
+            "color": ""
+
         },
         {
             "Nombre": "Apurimac",
-            "id": "polygon10"
+            "id": "polygon10",
+            "color": ""
         },
         {
             "Nombre": "Arequipa",
-            "id": "path9"
+            "id": "path9",
+            "color": ""
         },
         {
             "Nombre": "Ayacucho",
-            "id": "path10"
+            "id": "path10",
+            "color": ""
         },
         {
             "Nombre": "Cajamarca",
-            "id": "path24"
+            "id": "path24",
+            "color": ""
         },
         {
             "Nombre": "Cusco",
-            "id": "path8"
+            "id": "path8",
+            "color": ""
         },
         {
             "Nombre": "Huancavelica",
-            "id": "polygon13"
+            "id": "polygon13",
+            "color": ""
         },
         {
             "Nombre": "Huanuco",
-            "id": "path13"
+            "id": "path13",
+            "color": ""
         },
         {
             "Nombre": "Ica",
-            "id": "polygon14"
+            "id": "polygon14",
+            "color": ""
         },
         {
             "Nombre": "Junin",
-            "id": "polygon11"
+            "id": "polygon11",
+            "color": ""
         },
         {
             "Nombre": "La libertad",
-            "id": "polygon21"
+            "id": "polygon21",
+            "color": ""
         },
         {
             "Nombre": "Lambayeque",
-            "id": "polygon26"
-        },{
+            "id": "polygon26",
+            "color": ""
+        },
+        {
             "Nombre": "Lima",
-            "id": "polygon16"
+            "id": "polygon16",
+            "color": ""
         },
         {
             "Nombre": "Loreto",
-            "id": "path7"
+            "id": "path7",
+            "color": ""
         },{
             "Nombre": "Madre de dios",
-            "id": "path1"
+            "id": "path1",
+            "color": ""
         },
         {
             "Nombre": "Moquegua",
-            "id": "polygon8"
+            "id": "polygon8",
+            "color": ""
         },
         {
             "Nombre": "Pasco",
-            "id": "polygon12"
+            "id": "polygon12",
+            "color": ""
         },
         {
             "Nombre": "Piura",
-            "id": "polygon27"
+            "id": "polygon27",
+            "color": ""
         },
         {
             "Nombre": "Puno",
-            "id": "path2"
+            "id": "path2",
+            "color": ""
         },
         {
             "Nombre": "San Martin",
-            "id": "polygon15"
+            "id": "polygon15",
+            "color": ""
         },
         {
             "Nombre": "Tacna",
-            "id": "polygon2"
+            "id": "polygon2",
+            "color": ""
         },
         {
             "Nombre": "Tumbes",
-            "id": "polygon2"
+            "id": "polygon2",
+            "color": ""
         },
         {
             "Nombre": "Ucayali",
-            "id": "polygon9"
+            "id": "polygon9",
+            "color": ""
         },
         {
             "Nombre": "Provincia de Lima",
-            "id": "path73"
+            "id": "path73",
+            "color": ""
         },
         {
             "Nombre": "Callao",
-            "id": ["polygon73", "path74"]
+            "id": ["polygon73", "path74"],
+            "color": ""
         }
     ]
 

@@ -45,7 +45,21 @@ class Map:
         
 class Departamento:
     
-    def __init__(self, nombre, id):
+    def __init__(self, nombre, id, color):
         self.nombre = nombre
         self.id = id
-        
+        self.color = color
+        self.index = []
+    
+    def getNombre(self):
+        return self.nombre
+    
+    def getId(self):
+        return self.id
+    
+    def getColor(self):
+        return self.color
+    
+    def getIndex(self):
+        return self.index    
+
