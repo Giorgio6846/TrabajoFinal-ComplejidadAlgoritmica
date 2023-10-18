@@ -35,11 +35,11 @@ class Map:
         
         cairosvg.svg2png(url=svgO, write_to=pngM, scale = 0.4)
         
-        png_image = Image.open(pngM).convert("RGB")
+        png_image = Image.open(pngM).convert("RGBA")
         png_image_resized = png_image.resize((850,850))
         photo_image = ImageTk.PhotoImage(png_image_resized)
 
-        label1 = tk.Label(self.Screen, image=photo_image)
+        label1 = tk.Label(self.Screen, image=photo_image,bg='red')
         label1.image = photo_image
         label1.pack(expand = True, fill = tk.BOTH)
         

@@ -4,7 +4,7 @@ from UI.Mapa import Map
 
 class App:
 
-    def __init__(self,master):
+     def __init__(self,master):
         
         self.master = master
         
