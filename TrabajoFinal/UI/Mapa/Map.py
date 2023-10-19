@@ -39,7 +39,7 @@ class Map:
         png_image_resized = png_image.resize((850,850))
         photo_image = ImageTk.PhotoImage(png_image_resized)
 
-        label1 = tk.Label(self.Screen, image=photo_image,bg='red')
+        label1 = tk.Label(self.Screen, image=photo_image,bg='White')
         label1.image = photo_image
         label1.pack(expand = True, fill = tk.BOTH)
         
