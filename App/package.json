@@ -1,0 +1,14 @@
+{
+  "name": "complejidad-algoritmica",
+  "version": "1.0.0",
+  "description": "OwO",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Grupo 5",
+  "license": "UwU",
+  "devDependencies": {
+    "electron": "^27.0.1"
+  }
+}
