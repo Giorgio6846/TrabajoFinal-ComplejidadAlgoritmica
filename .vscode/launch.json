@@ -11,6 +11,28 @@
             "program": "${workspaceFolder}/TrabajoFinal/App.py",
             "console": "externalTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Electron App",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/App",
+            "runtimeExecutable": "${workspaceFolder}/App/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/App/node_modules/.bin/electron.cmd"
+            },
+            "args": [
+                "."
+            ],
+            "outputCapture": "std"
+        },
+        {
+            "name": "Run Python Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/Server/server.py",
+            "console": "externalTerminal",
+            "justMyCode": true
         }
     ]
 }
