@@ -1,17 +1,19 @@
-const { app, BrowserWindow, Menu, MenuItem } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem, ipcMain, ipcRenderer } = require("electron");
 
 const url = require("url");
 const { markAsUntransferable } = require("worker_threads");
 
 function mainWindow() {
-    win = new BrowserWindow();
+    mainWin = new BrowserWindow();
     
-    win.loadURL(
+    
+    mainWin.loadURL(
         url.format({
             pathname: "index.html",
             slashes: true
         })
     );
+    mainWin.webContents.openDevTools();
 }
 
 const template = [
@@ -41,6 +43,23 @@ const template = [
         ]
     }*/
 ]
+
+function searchWindow(){
+    ipcRenderer.send("openSearch")
+}
+
+ipcMain.on("openSearch", (event,data) => {
+    let childWin = new BrowserWindow();
+
+    childWin.loadURL(
+        url.format({
+            pathname: "search.html",
+            slashes: true
+        })
+    );
+    childWin.show()
+
+})
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
