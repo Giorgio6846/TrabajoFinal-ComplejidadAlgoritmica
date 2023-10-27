@@ -11,10 +11,8 @@ def loadGraph(Grafo):
     Grafo.add_node(nombrePais)    
 
     accessDepartamento(Grafo)
-    nx.write_graphml_lxml(Grafo,"test1.graphml")
     
 def accessDepartamento(Grafo):
-    
     Departamentos = list(df["departamento"].unique())
     
     for departamento in Departamentos:
@@ -41,8 +39,6 @@ def accessProvincia(dfDepartamento, Grafo, departamento):
         accessDistrito(dfProvincia, Grafo, provincia)
 
 def accessDistrito(dfProvincia, Grafo, provincia):
-    
-    #dataFrameDistrito = dataFrameProvincia.iloc[list(dataFrameProvincia["provincia"] == provincia)]
     Distritos = list(dfProvincia["distrito"].unique())
     
     for distrito in Distritos: 
@@ -61,4 +57,5 @@ def accessDireccion(dataframeDistrito, Grafo, distrito):
         
             direccion = row["direccion"]
             Grafo.add_node(direccion)
+            Grafo.nodes[direccion].update(row.to_dict())
             Grafo.add_edge(nombreDistrito, direccion)
