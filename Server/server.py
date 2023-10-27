@@ -1,17 +1,12 @@
-import zerorpc
-import gevent, signal
+import zmq
 
-class PythermalApi: 
-    def echo(self,text):
-        return text
+context = zmq.Context()
+socket = context.socket(zmq.REP)
 
-port = 42690
-address = 'tcp://127.0.0.1:' + port
-s = zerorpc.Server(PythermalApi())
-s.bind(address)
+socket.bind("tcp://0.0.0.0:5555")
 
-gevent.signal(signal.SIGTERM, s.stop)
-gevent.signal(signal.SIGINT, s.stop)
-
-s.run()
-
+while True:
+    message = socket.recv_json()
+    print("Received Request: ", message)
+    ret = {"a": 123, "b":321}
+    socket.send_json(ret)

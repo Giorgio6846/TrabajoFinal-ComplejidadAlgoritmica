@@ -9,6 +9,9 @@
   "author": "Grupo 5",
   "license": "UwU",
   "devDependencies": {
-    "electron": "^27.0.1"
+    "electron": "^27.0.2"
+  },
+  "dependencies": {
+    "zeromq": "^6.0.0-beta.6"
   }
 }
