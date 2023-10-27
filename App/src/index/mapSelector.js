@@ -1,7 +1,7 @@
 var a = document.getElementById("peruSvg")
 
 //Lectura del archivo json
-import data from './Assets/Lugares.json' assert {type: 'json'}
+import data from '../../Assets/Lugares.json' assert {type: 'json'}
 
 //Arreglo con lugares
 var dataLugares = []
