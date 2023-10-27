@@ -35,5 +35,11 @@
             "console": "externalTerminal",
             "justMyCode": true
         }
+    ],
+    "compounds": [
+        {
+            "name": "Run App and Server",
+            "configurations": ["Electron App","Run Python Server"]
+        }
     ]
 }
