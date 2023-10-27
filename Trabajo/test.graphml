@@ -1,4 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< Updated upstream
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
   <key id="d0" for="node" attr.name="attribute" attr.type="string" />
   <graph edgedefault="undirected">
@@ -7929,3 +7930,57 @@
     <edge source="Provincia.CALLAO" target="Distrito.VENTANILLA" />
   </graph>
 </graphml>
+=======
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><graph edgedefault="undirected"><node id="Pais.Peru"/>
+<node id="Departamento.PIURA"/>
+<node id="Departamento.AYACUCHO"/>
+<node id="Departamento.MADRE DE DIOS"/>
+<node id="Departamento.SAN MARTIN"/>
+<node id="Departamento.ANCASH"/>
+<node id="Departamento.AREQUIPA"/>
+<node id="Departamento.TACNA"/>
+<node id="Departamento.LAMBAYEQUE"/>
+<node id="Departamento.JUNIN"/>
+<node id="Departamento.CUSCO"/>
+<node id="Departamento.PUNO"/>
+<node id="Departamento.CAJAMARCA"/>
+<node id="Departamento.HUANUCO"/>
+<node id="Departamento.HUANCAVELICA"/>
+<node id="Departamento.LIMA"/>
+<node id="Departamento.AMAZONAS"/>
+<node id="Departamento.LA LIBERTAD"/>
+<node id="Departamento.APURIMAC"/>
+<node id="Departamento.UCAYALI"/>
+<node id="Departamento.ICA"/>
+<node id="Departamento.MOQUEGUA"/>
+<node id="Departamento.PASCO"/>
+<node id="Departamento.TUMBES"/>
+<node id="Departamento.LORETO"/>
+<node id="Departamento.CALLAO"/>
+<edge source="Pais.Peru" target="Departamento.PIURA"/>
+<edge source="Pais.Peru" target="Departamento.AYACUCHO"/>
+<edge source="Pais.Peru" target="Departamento.MADRE DE DIOS"/>
+<edge source="Pais.Peru" target="Departamento.SAN MARTIN"/>
+<edge source="Pais.Peru" target="Departamento.ANCASH"/>
+<edge source="Pais.Peru" target="Departamento.AREQUIPA"/>
+<edge source="Pais.Peru" target="Departamento.TACNA"/>
+<edge source="Pais.Peru" target="Departamento.LAMBAYEQUE"/>
+<edge source="Pais.Peru" target="Departamento.JUNIN"/>
+<edge source="Pais.Peru" target="Departamento.CUSCO"/>
+<edge source="Pais.Peru" target="Departamento.PUNO"/>
+<edge source="Pais.Peru" target="Departamento.CAJAMARCA"/>
+<edge source="Pais.Peru" target="Departamento.HUANUCO"/>
+<edge source="Pais.Peru" target="Departamento.HUANCAVELICA"/>
+<edge source="Pais.Peru" target="Departamento.LIMA"/>
+<edge source="Pais.Peru" target="Departamento.AMAZONAS"/>
+<edge source="Pais.Peru" target="Departamento.LA LIBERTAD"/>
+<edge source="Pais.Peru" target="Departamento.APURIMAC"/>
+<edge source="Pais.Peru" target="Departamento.UCAYALI"/>
+<edge source="Pais.Peru" target="Departamento.ICA"/>
+<edge source="Pais.Peru" target="Departamento.MOQUEGUA"/>
+<edge source="Pais.Peru" target="Departamento.PASCO"/>
+<edge source="Pais.Peru" target="Departamento.TUMBES"/>
+<edge source="Pais.Peru" target="Departamento.LORETO"/>
+<edge source="Pais.Peru" target="Departamento.CALLAO"/>
+</graph></graphml>
+>>>>>>> Stashed changes
