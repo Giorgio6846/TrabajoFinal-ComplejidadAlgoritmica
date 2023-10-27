@@ -1,8 +1,9 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu, MenuItem } = require("electron");
 
 const url = require("url");
+const { markAsUntransferable } = require("worker_threads");
 
-function newApp() {
+function mainWindow() {
     win = new BrowserWindow();
     
     win.loadURL(
@@ -13,5 +14,34 @@ function newApp() {
     );
 }
 
+const template = [
+    {
+        label: 'Dev',
+        submenu: [
+            {
+                role: 'toggledevtools'
+            },
+            {
+                role: 'reload'
+            },
+            {
+                role: 'forcereload'
+            }
+        ],
+    },
+    /*{
+        label: 'Search',
+        submenu: [
+            {
+                label: 'Open Window',
+                click() {
+                    alert("OwO");
+                }
+            }
+        ]
+    }*/
+]
 
-app.on("ready", newApp);
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+app.on("ready", mainWindow);

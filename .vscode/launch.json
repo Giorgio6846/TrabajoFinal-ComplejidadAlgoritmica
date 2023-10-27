@@ -24,7 +24,8 @@
             "args": [
                 "."
             ],
-            "outputCapture": "std"
+            "outputCapture": "std",
+            "console":"externalTerminal"
         },
         {
             "name": "Run Python Server",
