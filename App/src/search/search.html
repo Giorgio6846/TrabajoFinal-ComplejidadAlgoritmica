@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-    <title>Settings</title>
+  <meta charset="UTF-8">
 </head>
-
 <body>
-    <div>
-        <h1 style="color: green;">
-            Hello : This is Settings window
-        </h1>
-        <button onclick="goToFirstWindow()">
-            Go to Main Window
-        </button>
-    </div>
-</body>
+    <br>
+  <form action="" method="post">
+    <label for="departamento">Departamento:</label>
+    <select name="departamento" id="departamento">
+      <option value="">Seleccione un departamento</option>
+    </select>
+    <input type="submit" value="Enviar">
+    <br><br>
 
+    <label for="provincia">Provincia:</label>
+    <select name="provincia" id="provincia">
+      <option value="">Seleccione una provincia</option>
+    </select>
+    <input type="submit" value="Enviar">
+    <br><br>
+    
+    <label for="distrito">Distrito:</label>
+    <select name="distrito" id="distrito">
+      <option value="">Seleccione un distrito</option>
+    </select>
+
+    <input type="submit" value="Enviar">
+  </form>
+</body>
 </html>
