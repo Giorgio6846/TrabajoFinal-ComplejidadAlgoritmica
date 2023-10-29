@@ -43,7 +43,12 @@ const template = [
 ]
 
 ipcMain.on("openSearch", (event,data) => {
-    let childWin = new BrowserWindow();
+    let childWin = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+        },
+    });
 
     childWin.loadURL(
         url.format({
@@ -53,6 +58,7 @@ ipcMain.on("openSearch", (event,data) => {
     );
 
     childWin.show()
+    childWin.webContents.openDevTools();
 })
 
 const menu = Menu.buildFromTemplate(template)

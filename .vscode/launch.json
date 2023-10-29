@@ -34,6 +34,14 @@
             "program": "${workspaceFolder}/Server/server.py",
             "console": "externalTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Run Python Test Client",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/Server/testClient.py",
+            "console": "externalTerminal",
+            "justMyCode": true
         }
     ],
     "compounds": [
