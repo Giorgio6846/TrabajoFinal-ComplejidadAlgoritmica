@@ -13,15 +13,15 @@ socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 
 class Server:
-    def __init__(self):
-        pass
-    
-    def json(self,message):
-        data = message.json
+
+
+
+    pass
+
 
 while True:
     #  Wait for next request from client
-    message = socket.recv()
+    message = socket.recv_json()
     print("Received request: %s" % message)
 
     #  Do some 'work'
