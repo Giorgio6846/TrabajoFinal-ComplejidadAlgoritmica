@@ -25,5 +25,5 @@ for request in range(10):
     socket.send_json(messageServer)
 
     #  Get the reply.
-    message = socket.recv()
+    message = socket.recv_json()
     print(f"Received reply {request} [ {message} ]")

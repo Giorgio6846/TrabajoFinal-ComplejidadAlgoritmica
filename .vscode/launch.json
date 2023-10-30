@@ -48,6 +48,13 @@
         {
             "name": "Run App and Server",
             "configurations": ["Electron App","Run Python Server"]
+        },
+        {
+            "name": "Run testClient and Server",
+            "configurations": [
+                "Run Python Test Client",
+                "Run Python Server"
+            ]
         }
     ]
 }

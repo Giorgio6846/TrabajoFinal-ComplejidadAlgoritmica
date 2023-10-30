@@ -1,20 +1,29 @@
-const zmq  = require("zeromq")
+var zmq  = require("zeromq");
+sock = new zmq.Request;
+
+const ipAddress = "tcp://127.0.0.1:5555";
+
+const decoder = new TextDecoder();
 
 async function run(dataJSON) {
-    const sock = new zmq.Request
+    sock.connect(ipAddress)
+    console.log("Connected to server in tcp://0.0.0.0:5555")
 
-    sock.connect("tcp://127.0.0.1:5555")
-    console.log("Producer bound to port 5555")
-
-    await sock.send(dataJSON)
-    const [result] = await sock.receive()
-
-    console.log(result)
+    await(sock.send(dataJSON))
+    const result = await sock.receive()
+    
+    /*
+    respuestaJSON = await sock.receive()
+    
+    console.log("Test")
+    console.log(respuestaJSON)
+    
+    console.log("Closed Connection")
     sock.close()
+    */
 
-    return result
-}
-
-function serverCOMS(dataJSON) {
-    return run(dataJSON)
+    //var dataServer = decoder.decode(result)
+    dataServer = decoder.decode(result[0])
+    console.log(dataServer)
+    return dataServer   
 }
