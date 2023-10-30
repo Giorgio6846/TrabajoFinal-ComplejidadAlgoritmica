@@ -1,52 +1,33 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
       <script src="../serverConnection/connect.js"></script>
     <script src = "search.js"></script>
     <script type = "module" src = "search.js"></script>
 </head>
-
 <body>
-<<<<<<< Updated upstream
-    <div>
-        <h1 style="color: green;">
-            Hello : This is Settings window
-        </h1>
-        <button onclick="goToFirstWindow()">
-            Go to Main Window
-        </button>
-        <button onclick = "requestDataServer()">
-            Test
-        </button>
-=======
     <br>
-    <div id = "seccionDepartamento">
-      <label for="departamento">Departamento:</label>
-      <select name="departamento" id="listaDepartamento">
-        <option value="">Seleccione un departamento</option>
-      </select>
-      <input type="submit" value="Enviar">
-      <br><br>
-    </div>
+  <form action="" method="post">
+    <label for="departamento">Departamento:</label>
+    <select name="departamento" id="departamento">
+      <option value="">Seleccione un departamento</option>
+    </select>
+    <input type="submit" value="Enviar">
+    <br><br>
 
-    <div id = "seccionProvincia">
-      <label for="provincia">Provincia:</label>
-      <select name="provincia" id="listaProvincia">
-        <option value="">Seleccione una provincia</option>
-      </select>
-      <input type="submit" value="Enviar">
-      <br><br>
-    </div>
+    <label for="provincia">Provincia:</label>
+    <select name="provincia" id="provincia">
+      <option value="">Seleccione una provincia</option>
+    </select>
+    <input type="submit" value="Enviar">
+    <br><br>
+    
+    <label for="distrito">Distrito:</label>
+    <select name="distrito" id="distrito">
+      <option value="">Seleccione un distrito</option>
+    </select>
 
-    <div id = "seccionDistrito">
-      <label for="distrito">Distrito:</label>
-      <select name="distrito" id="listiaDistrito">
-        <option value="">Seleccione un distrito</option>
-      </select>
-      <input type="submit" value="Enviar">
->>>>>>> Stashed changes
-    </div>
+    <input type="submit" value="Enviar">
+  </form>
 </body>
-
 </html>
