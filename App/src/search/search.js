@@ -1,14 +1,33 @@
-function requestDataServer(){
-   requestData = {
-    "tipo": "Status",
-    "Departamento": "NULL",
-    "Provincia": "NULL",
-    "Distrito": "NULL",
+function requestDataServer(requestData){
+   requestJSON = JSON.stringify(requestData)
+   receivedJSON = run(requestJSON)
+
+   console.log(receivedJSON)
+
+   return receivedJSON
+}
+
+function requestDepartamentos(){
+   requestDepartamentoData = {
+      "type": "listDepartamento",
+      "Departamento": "NULL",
+      "Provincia": "NULL",
+      "Distrito": "NULL",
    };
 
-   requestJSON = JSON.stringify(requestData)
-
-   console.log(requestJSON);
-
-   console.log(serverCOMS(requestJSON))
+   requestDataServer(requestDepartamentoData)
 }
+
+function requestProvincia() {
+
+}
+
+function requestDistrito() {
+
+}
+
+var departamentoId = document.getElementById("seccionDistrito");
+var provinciaId = document.getElementById("seccionProvincia");
+var distritoId = document.getElementById("seccionDistrito");
+
+requestDepartamentos()

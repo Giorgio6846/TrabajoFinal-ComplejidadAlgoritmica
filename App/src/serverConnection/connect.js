@@ -7,14 +7,13 @@ async function run(dataJSON) {
     console.log("Producer bound to port 5555")
 
     await sock.send(dataJSON)
-    const [result] = await sock.receive()
-
-    console.log(result)
+    respuestaJSON = await sock.receive()
+    
+    console.log("Test")
+    console.log(respuestaJSON)
+    
+    console.log("Closed Connection")
     sock.close()
 
-    return result
-}
-
-function serverCOMS(dataJSON) {
-    return run(dataJSON)
+    return respuestaJSON
 }
