@@ -15,6 +15,7 @@ class Server:
     def __init__(self):
         self.Grafo = nx.Graph()
         lG.loadGraph(self.Grafo)
+        print("Graph loaded")
     
     def parseJSON(self, message):
         print(type(message))
@@ -39,7 +40,7 @@ class Server:
         
 objServer = Server()
 
-print("Open")
+print("Ready")
 
 while True:
     #  Wait for next request from client
