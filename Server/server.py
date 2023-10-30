@@ -21,6 +21,7 @@ class Server:
         print(message["type"])
         
         if message["type"] == "listDepartamento":
+            print(message)
             self.JSONlistDepartamento()
 
     def JSONlistDepartamento(self):
@@ -33,6 +34,8 @@ class Server:
 
         print(JSONlistDep)
         socket.send_string(JSONlistDep)
+        
+        print("Sent JSON")
         
 objServer = Server()
 
