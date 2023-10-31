@@ -10,7 +10,7 @@ def getDepartamentos(Grafo):
         
     return listDepartamentos
 
-def getAllProvincias1(Grafo):
+def getAllProvincias(Grafo):
     visited = []
     
     visited.append(startingNode)

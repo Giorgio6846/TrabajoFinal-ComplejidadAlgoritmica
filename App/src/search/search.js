@@ -48,7 +48,7 @@ function resetDepartamento(){
 function requestProvincia() {
    //Se cambia el departamento que depende del seleccionado
    requestJSONData = {
-      "type": "listDepartamento",
+      "type": "listProvincia",
       "Departamento": "NULL",
       "Provincia": "NULL",
       "Distrito": "NULL",
@@ -60,12 +60,7 @@ function requestProvincia() {
 
 function requestDistrito() {
    //Se cambia el departamento y provincia que depende del seleccionado
-   requestJSONData = {
-      "type": "listDepartamento",
-      "Departamento": "NULL",
-      "Provincia": "NULL",
-      "Distrito": "NULL",
-   };
+
 
    var selectDistrito = document.getElementById("selectDistrito")
 

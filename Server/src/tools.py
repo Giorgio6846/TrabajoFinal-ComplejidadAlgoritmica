@@ -40,6 +40,7 @@ def saveDepartamentosJSON(listDepartamentos):
     for departamento in listDepartamentos:
         departamento = removeDepartamentoString(departamento)
         listDepartamentosTMP.append(departamento)
+        listDepartamentosTMP = sorted(listDepartamentosTMP)  
     return listDepartamentosTMP
 
 def saveProvinciasJSON(listProvincias):
@@ -47,6 +48,7 @@ def saveProvinciasJSON(listProvincias):
     for provincia in listProvincias:
         provincia = removeProvinciaString(provincia)
         listProvinciasTMP.append(provincia)
+        listProvinciasTMP = sorted(listProvinciasTMP)
     return listProvinciasTMP
 
 def saveDistritosJSON(listDistritos):
@@ -54,4 +56,5 @@ def saveDistritosJSON(listDistritos):
     for distrito in listDistritos:
         distrito = removeDistritoString(distrito)
         listDistrtosTMP.append(distrito)
+        listDistrtosTMP = sorted(listDistrtosTMP)
     return listDistrtosTMP

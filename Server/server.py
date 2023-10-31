@@ -23,9 +23,17 @@ class Server:
         
         if message["type"] == "listDepartamento":
             print(message)
-            self.JSONlistDepartamento()
-
-    def JSONlistDepartamento(self):
+            self.JSONlistDepartamento(message)
+        elif message["type"] == "listProvincia":
+            print(message)
+            self.JSONlistProvincia(message)
+        elif message["type"] == "listDistrito":
+            print(message)
+            self.JSONlistDistrito(message)
+            
+    def JSONlistDepartamento(self, JSONReceived):
+        
+        #Obtener todos los departamentos
         listDep = algo.getDepartamentos(self.Grafo)
         listDep = tools.saveDepartamentosJSON(listDep)
 
@@ -37,6 +45,31 @@ class Server:
         socket.send_string(JSONlistDep)
         
         print("Sent JSON")
+        
+    def JSONlistProvincia(self, JSONReceived):
+        if(JSONReceived["Departamento"] == "NULL"):
+            pass         
+        #Obtener todas las provincias
+        else:
+            pass
+        #Obtener ciertas provincias
+        
+        pass
+    
+    def JSONlistDistrito(self, JSONReceived):
+        if(JSONReceived["Provincia"] == "NULL" and JSONReceived["Departamento"] == "NULL"):
+        #Obtener todos los distritos
+            pass
+        elif(JSONReceived["Provincia"] != "NULL" and JSONReceived["Departamento"] == "NULL"):
+        #Obtener ciertos distritos - Provincias
+            pass
+        #Obtener ciertos distritos - Departamento
+        elif(JSONReceived["Provincia"] == "NULL" and JSONReceived["Departamento"] != "NULL"):
+            pass
+        #Obtener cierto distrito - Departamento y Provincia
+        else:
+            pass
+        pass
         
 objServer = Server()
 
