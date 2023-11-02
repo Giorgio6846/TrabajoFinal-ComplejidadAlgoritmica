@@ -2,7 +2,7 @@ import pandas as pd
 
 nombrePais = "Pais.Peru"
 
-df = pd.read_csv("Generador/Dataframe.csv", index_col= False)
+df = pd.read_csv("../Generador/Dataframe.csv", index_col= False)
 #df = pd.read_csv("../Generador/Dataframe.csv", index_col = False)
 df = df.drop(columns=["Unnamed: 0"])
 
