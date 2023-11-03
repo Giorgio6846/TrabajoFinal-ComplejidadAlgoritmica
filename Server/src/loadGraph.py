@@ -1,10 +1,20 @@
 import pandas as pd
+import platform
 
 nombrePais = "Pais.Peru"
 
-#df = pd.read_csv("/Assets/Dataframe.csv", index_col= False)
-df = pd.read_csv("../Generador/Dataframe.csv", index_col = False)
+if platform.system() == 'Windows':
+    filePath = "../Generador/Dataframe.csv"
+elif platform.system() == 'Darwin':
+    filePath = "Generador/Dataframe.csv"
+else:
+    filePath = "Generador/Dataframe.csv"
+    
+df = pd.read_csv(filePath, index_col = False)
 df = df.drop(columns=["Unnamed: 0"])
+
+    
+#df = pd.read_csv("/Assets/Dataframe.csv", index_col= False)
 
 def accessDireccion(dataframeDistrito, Grafo, idDistrito):
     for index, row in dataframeDistrito.iterrows():        
