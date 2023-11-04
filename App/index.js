@@ -50,14 +50,14 @@ ipcMain.on("openSearch", (event,data) => {
         },
     });
 
-    /*
+    
     childWin.loadURL(
         url.format({
             pathname: "src/search/search.html",
             slashes: true
         })
     );
-    */
+    
 
     childWin.show()
     childWin.webContents.openDevTools();

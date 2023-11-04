@@ -4,7 +4,7 @@ import platform
 nombrePais = "Pais.Peru"
 
 if platform.system() == 'Windows':
-    filePath = "../Generador/Dataframe.csv"
+    filePath = "./Generador/Dataframe.csv"
 elif platform.system() == 'Darwin':
     filePath = "Generador/Dataframe.csv"
 else:
@@ -72,4 +72,4 @@ def accessDepartamento(Grafo):
 def loadGraph(Grafo):
     Grafo.add_node(nombrePais)
     
-    accessDepartamento(Grafo)
+    accessDepartamento(Grafo)   
