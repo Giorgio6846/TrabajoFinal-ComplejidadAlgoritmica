@@ -9,7 +9,7 @@ async function run(dataJSON) {
     sock.connect(ipAddress)
     console.log("Connected to server in tcp://0.0.0.0:5555")
 
-    await(sock.send(dataJSON))
+    await sock.send(dataJSON)
     const result = await sock.receive()
     
     /*

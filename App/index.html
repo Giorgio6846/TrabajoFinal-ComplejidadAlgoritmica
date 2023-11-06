@@ -9,10 +9,23 @@
     <script src = "src/index/mapSelector.js" ></script>
 </head>
 
-
 <body>
-    <button onClick = "searchWindow()">Search</button>
-    <object data = "Assets/PeruOriginal.svg" type="image/svg+xml"z id = "peruSvg"></object>
+    <button id = "buttonSearch" onClick>Search</button>
+    <object data = "Assets/Peru.svg" type="image/svg+xml"z id = "peruSvg"></object>
 </body>
+
+<script>
+    const DepartamentoSelecionado = "null"
+
+    localStorage.setItem('DepartamentoSelecionado', DepartamentoSelecionado)
+
+    buttonSearch.addEventListener("click", () =>{
+        searchWindow()
+        localStorage.setItem('DepartamentoSelecionado', "NULL")
+    
+        window.location.href = "src/search/search.html"
+    });
+    
+</script>
 
 </html>

@@ -119,17 +119,8 @@
             "Nombre": "Ucayali",
             "id": "polygon9",
             "color": ""
-        },
-        {
-            "Nombre": "Provincia de Lima",
-            "id": "path73",
-            "color": ""
-        },
-        {
-            "Nombre": "Callao",
-            "id": ["polygon73", "path74"],
-            "color": ""
         }
+
     ]
 
 }

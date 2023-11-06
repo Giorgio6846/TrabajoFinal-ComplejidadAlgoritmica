@@ -1,7 +1,7 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
-
 const url = require("url");
-const { markAsUntransferable } = require("worker_threads");
+
+childClosed = true
 
 function mainWindow() {
     mainWin = new BrowserWindow({
@@ -13,19 +13,11 @@ function mainWindow() {
         
     mainWin.loadFile("index.html");
 
-    /*
-        mainWin.loadURL(
-        url.format({
-            pathname: "index.html",
-            slashes: true
-        })
-    );
-    */
 
     mainWin.webContents.openDevTools();
 }
 
-const template = [
+const mainMenu = [
     {
         label: 'Dev',
         submenu: [
@@ -41,31 +33,44 @@ const template = [
         ],
     },
 ]
-
-ipcMain.on("openSearch", (event,data) => {
-    let childWin = new BrowserWindow({
+/*
+function crearHijo(){
+    childWin = new BrowserWindow({
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         },
     });
 
-    
     childWin.loadURL(
         url.format({
             pathname: "src/search/search.html",
             slashes: true
         })
     );
-    
+}
 
-    childWin.show()
-    childWin.webContents.openDevTools();
+ipcMain.on("openSearch", (event,data) => {
+    console.log(childClosed)
 
+    if(childClosed)
+    {
+        childClosed = false
+
+        childWin.show()
+        childWin.webContents.openDevTools();
+    }
 })
-
-
-
-const menu = Menu.buildFromTemplate(template)
+*/
+const menu = Menu.buildFromTemplate(mainMenu)
 Menu.setApplicationMenu(menu)
-app.on("ready", mainWindow);
+app.on("ready", () => {
+    mainWindow()
+    /*crearHijo()
+
+    childWin.on('close',function(e){
+        childWin.hide()  
+        childClosed = true
+    });
+    */
+});

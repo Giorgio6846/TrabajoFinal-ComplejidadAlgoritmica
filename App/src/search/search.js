@@ -2,6 +2,8 @@ var listaDepartamentos = []
 var listaProvincias = []
 var listaDistritos = []
 
+var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
+
 async function requestDataServer(requestData){
    requestJSON = JSON.stringify(requestData)
    receivedJSON = await run(requestJSON)
@@ -13,13 +15,12 @@ async function requestDataServer(requestData){
 async function requestDepartamentos(){
    requestJSONData = {
       "type": "listDepartamento",
-      "Departamento": "NULL",
+      "Departamento": departamentoBuscar,
       "Provincia": "NULL",
       "Distrito": "NULL",
    };
 
    JSONdata = await requestDataServer(requestJSONData)
-
 
    console.log(JSONdata["departamentos"])
 
@@ -49,7 +50,7 @@ async function requestProvincia() {
    //Se cambia el departamento que depende del seleccionado
    requestJSONData = {
       "type": "listProvincia",
-      "Departamento": "NULL",
+      "Departamento": departamentoBuscar,
       "Provincia": "NULL",
       "Distrito": "NULL",
    };
@@ -67,7 +68,7 @@ async function requestDistrito() {
    //Se cambia el departamento que depende del seleccionado
    requestJSONData = {
       "type": "listDistrito",
-      "Departamento": "NULL",
+      "Departamento": departamentoBuscar,
       "Provincia": "NULL",
       "Distrito": "NULL",
    };
@@ -95,8 +96,9 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
 var provinciaId = document.getElementById("seccionProvincia");
 var distritoId = document.getElementById("seccionDistrito");
 
-requestDepartamentos()
+if (localStorage.getItem('DepartamentoSelecionado') == "NULL") {
+   requestDepartamentos()
+}
+
 requestProvincia()
 requestDistrito()
-
-//resetDepartamento()

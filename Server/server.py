@@ -55,6 +55,7 @@ class Server:
         
         #Obtener ciertas provincias
         else:
+            listProv = algo.getProvincia(self.Grafo, tools.addDepartamentoString(JSONReceived["Departamento"]))
             pass
 
         
@@ -81,13 +82,15 @@ class Server:
             pass
         #Obtener ciertos distritos - Departamento
         elif(JSONReceived["Provincia"] == "NULL" and JSONReceived["Departamento"] != "NULL"):
-            pass
+            listDis = algo.getDistritoD(self.Grafo, tools.addDepartamentoString(JSONReceived["Departamento"]))
         #Obtener cierto distrito - Departamento y Provincia
         else:
             pass
         pass
         
-        listDis = tools.saveProvinciasJSON(listDis)
+        listDis = tools.saveDistritosJSON(listDis)
+        print(listDis)
+
 
         dictDis = {"distritos": listDis}
         

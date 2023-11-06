@@ -3,31 +3,49 @@
 <head>
     <script src="../serverConnection/connect.js"></script>
     <script src = "search.js"></script>
-    
 </head>
+
 <body>
-    <br>
-  <form action="" method="post">
+  <div id = "divDepartamento">
     <label for="departamento">Departamento:</label>
     <select name="departamento" id="selectDepartamento">
       <option value="">Seleccione un departamento</option>
     </select>
     <input type="submit" value="Enviar">
     <br><br>
+  </div>
 
+  <div id = "divProvincia">
     <label for="provincia">Provincia:</label>
     <select name="provincia" id="selectProvincia">
       <option value="">Seleccione una provincia</option>
     </select>
     <input type="submit" value="Enviar">
-    <br><br>
-    
+    <br><br>  
+  </div>
+
+  <div id = "divDistrito">
     <label for="distrito">Distrito:</label>
-    <select name="distrito" id="selectDistrito"> 
+    <select name="distrito" id="selectDistrito">
       <option value="">Seleccione un distrito</option>
     </select>
-
     <input type="submit" value="Enviar">
-  </form>
+  </div>
+
+  <button id="indexPage" onClick>Regresar</button>
 </body>
+
+<script>
+  indexPage.addEventListener("click", () => {
+    window.location.href = "../../index.html"
+  });
+
+  if (localStorage.getItem('DepartamentoSelecionado') == "NULL") {
+    document.getElementById("divDepartamento").removeAttribute("hidden")
+  }
+  else {
+    document.getElementById("divDepartamento").setAttribute("hidden", "hidden")
+  }
+</script>
+
 </html>

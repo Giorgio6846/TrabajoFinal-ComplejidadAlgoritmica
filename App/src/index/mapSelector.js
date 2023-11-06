@@ -71,7 +71,10 @@ a.addEventListener("load", function () {
 
         if (typeof (lugarObject.id) == "string") {
             lugarObject.elementId.addEventListener("mousedown", function () {
-                alert(lugarObject.nombre)
+                console.log(lugarObject.nombre)
+                localStorage.setItem('DepartamentoSelecionado', lugarObject.nombre)
+
+                window.location.href = "src/search/search.html"
             })
             }
         else {
@@ -118,6 +121,5 @@ a.addEventListener("load", function () {
     //path7.addEventListener("mousedown", function () {
     //    alert("Hello World");
     //}, false)
-
 
 }, false)

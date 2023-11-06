@@ -1,3 +1,6 @@
+import dis
+from functools import update_wrapper
+from math import dist
 import re
 
 def removeDepartamentoString(departamento):
@@ -12,7 +15,10 @@ def removeProvinciaString(provincia):
 
 def removeDistritoString(distrito):
     distrito = distrito.replace("Distrito.","")
-    distrito = str.capitalize(distrito)
+    distrito = distrito.split(".")
+    distrito[0] = distrito[0].capitalize()
+    distrito[1] = distrito[1].capitalize()
+    distrito = '.'.join(distrito)
     return distrito
 
 def addDepartamentoString(departamento):
@@ -32,7 +38,7 @@ def getTipoNodo(string):
         return "Dep"
     elif re.search("Provincia.", string):
         return "Prov"
-    elif re.search("Distrito..", string):
+    elif re.search("Distrito.", string):
         return "Dis"
     elif re.search("Pais.", string):
         return "Pais"
@@ -41,24 +47,24 @@ def getTipoNodo(string):
     
 def saveDepartamentosJSON(listDepartamentos):
     listDepartamentosTMP = []
-    for departamento in listDepartamentos:
-        departamento = removeDepartamentoString(departamento)
+    for item in listDepartamentos:
+        departamento = removeDepartamentoString(item)
         listDepartamentosTMP.append(departamento)
         listDepartamentosTMP = sorted(listDepartamentosTMP)  
     return listDepartamentosTMP
 
 def saveProvinciasJSON(listProvincias):
     listProvinciasTMP = []
-    for provincia in listProvincias:
-        provincia = removeProvinciaString(provincia)
+    for item in listProvincias:
+        provincia = removeProvinciaString(item)
         listProvinciasTMP.append(provincia)
         listProvinciasTMP = sorted(listProvinciasTMP)
     return listProvinciasTMP
 
 def saveDistritosJSON(listDistritos):
     listDistrtosTMP = []
-    for distrito in listDistritos:
-        distrito = removeDistritoString(distrito)
+    for item in listDistritos:
+        distrito = removeDistritoString(item)
         listDistrtosTMP.append(distrito)
         listDistrtosTMP = sorted(listDistrtosTMP)
     return listDistrtosTMP
