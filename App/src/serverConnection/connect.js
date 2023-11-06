@@ -19,7 +19,7 @@ async function run(dataJSON) {
     console.log(respuestaJSON)
     
     console.log("Closed Connection")
-    sock.close()
+    
     */
 
     //var dataServer = decoder.decode(result)

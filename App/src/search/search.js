@@ -45,7 +45,7 @@ function resetDepartamento(){
    }
 }
 
-function requestProvincia() {
+async function requestProvincia() {
    //Se cambia el departamento que depende del seleccionado
    requestJSONData = {
       "type": "listProvincia",
@@ -54,16 +54,31 @@ function requestProvincia() {
       "Distrito": "NULL",
    };
 
+   JSONData = await requestDataServer(requestJSONData)
+
+   console.log(JSONData["provincias"])
+
    var selectProvincia = document.getElementById("selectProvincia")
 
+   addItemsToSelect(selectProvincia, listaProvincias, JSONData["provincias"])
 }
 
-function requestDistrito() {
-   //Se cambia el departamento y provincia que depende del seleccionado
+async function requestDistrito() {
+   //Se cambia el departamento que depende del seleccionado
+   requestJSONData = {
+      "type": "listDistrito",
+      "Departamento": "NULL",
+      "Provincia": "NULL",
+      "Distrito": "NULL",
+   };
 
+   JSONData = await requestDataServer(requestJSONData)
+
+   console.log(JSONData["distritos"])
 
    var selectDistrito = document.getElementById("selectDistrito")
 
+   addItemsToSelect(selectDistrito, listaDistritos, JSONData["distritos"])
 }
 
 function addItemsToSelect(selectItem, listSelect, JSONData){
@@ -81,5 +96,7 @@ var provinciaId = document.getElementById("seccionProvincia");
 var distritoId = document.getElementById("seccionDistrito");
 
 requestDepartamentos()
+requestProvincia()
+requestDistrito()
 
-resetDepartamento()
+//resetDepartamento()

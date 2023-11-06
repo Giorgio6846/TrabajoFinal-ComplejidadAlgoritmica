@@ -1,2 +1,4 @@
 
 App/node_modules/
+Server/__pycache__
+Server/src/__pycache__

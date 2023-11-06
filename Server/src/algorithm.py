@@ -2,19 +2,11 @@ import src.tools as tools
 
 startingNode = "Pais.Peru"
 
-def getDepartamentos(Grafo):
-    listDepartamentos = []
-    
-    for departamentos in Grafo.edges(startingNode):
-        listDepartamentos.append(departamentos[1])
-        
-    return listDepartamentos
-
 def getAllProvincias(Grafo):
     visited = []
     
     visited.append(startingNode)
-    queue = getDepartamentos(Grafo)
+    queue = getAll(Grafo, 1)
     
     provinciasDep = []
     
@@ -42,7 +34,7 @@ def getProvincia(Grafo, Departamento):
     visited = []
     
     visited.append(startingNode)
-    queue = getDepartamentos(Grafo)
+    queue = getAll(Grafo, 1)
         
     provinciasDep = []
     
@@ -54,40 +46,51 @@ def getProvincia(Grafo, Departamento):
                     
     return provinciasDep
 
-def getDistrito(Grafo, departamento, provincia):
-    #Departamento = addDepartamentoString(Departamento)
 
+def getAll(Grafo, Nivel):
+    listDatos = []
+    
     visited = []
-    
     visited.append(startingNode)
-    queue = getDepartamentos(Grafo)
-        
-    distritoDep = []
     
-    """
-    for departamento in queue:
-        if departamento == Departamento:
-            for nodosConectados in Grafo.edges(departamento):
-                if nodosConectados[1] not in visited:
-                    provinciasDep.append(nodosConectados[1])
-    """  
-                    
+    queue = []
+    queue.append(startingNode)
+
     while queue:
         item = queue.pop()
         
-        if item not in visited:
-        
-            if item == departamento:
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Prov":
-                        queue.append(nodo1)
+        for node0, node1 in Grafo.edges(item):
             
-            if item == provincia:
-                print(item)
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Dis":
-                        distritoDep.append(Grafo.nodes[nodo1]["Label"])            
+            tipoNodo = tools.getTipoNodo(node1)
             
-            visited.append(item)
+            if Nivel == 1:
+                
+                if tipoNodo == "Dep":
+                    listDatos.append(node1)
+            
+            elif Nivel == 2:
+            
+                if tipoNodo == "Dep":
+                    if node1 not in visited:
+                        queue.append(node1)                  
+                elif tipoNodo == "Prov":
+                    listDatos.append(node1)
+                    
+            elif Nivel == 3:
+                
+                if tipoNodo == "Dep" or tipoNodo == "Prov":
+                    if node1 not in visited:
+                        queue.append(node1)
+                elif tipoNodo == "Dis":
+                    listDatos.append(Grafo.nodes[node1]["provincia"] + "." + Grafo.nodes[node1]["Label"])
+            elif Nivel == 4:
+
+                if tipoNodo == "Dep" or tipoNodo == "Prov" or tipoNodo == "Dis":
+                    if node1 not in visited:
+                        queue.append(node1)
+                elif tipoNodo =="Calle":
+                    listDatos.append(node1)
+
+        visited.append(item)
     
-    return distritoDep
+    return listDatos

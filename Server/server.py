@@ -34,7 +34,7 @@ class Server:
     def JSONlistDepartamento(self, JSONReceived):
         
         #Obtener todos los departamentos
-        listDep = algo.getDepartamentos(self.Grafo)
+        listDep = algo.getAll(self.Grafo,1)
         listDep = tools.saveDepartamentosJSON(listDep)
 
         dictDep = {"departamentos": listDep}
@@ -44,22 +44,38 @@ class Server:
         print(JSONlistDep)
         socket.send_string(JSONlistDep)
         
-        print("Sent JSON")
+        print("JSON Departamentos Sent")
         
     def JSONlistProvincia(self, JSONReceived):
-        if(JSONReceived["Departamento"] == "NULL"):
-            pass         
+        listProv = []
+        
         #Obtener todas las provincias
+        if(JSONReceived["Departamento"] == "NULL"):
+            listProv = algo.getAll(self.Grafo, 2)
+        
+        #Obtener ciertas provincias
         else:
             pass
-        #Obtener ciertas provincias
+
         
-        pass
+        listProv = tools.saveProvinciasJSON(listProv)
+
+        dictProv = {"provincias": listProv}
+        
+        JSONlistProv = json.dumps(dictProv)
+        
+        print(JSONlistProv)
+        
+        socket.send_string(JSONlistProv)
+        
+        print("JSON Provincias Sent")
     
     def JSONlistDistrito(self, JSONReceived):
+        listDis = []
+        
         if(JSONReceived["Provincia"] == "NULL" and JSONReceived["Departamento"] == "NULL"):
         #Obtener todos los distritos
-            pass
+            listDis = algo.getAll(self.Grafo, 3)        
         elif(JSONReceived["Provincia"] != "NULL" and JSONReceived["Departamento"] == "NULL"):
         #Obtener ciertos distritos - Provincias
             pass
@@ -70,6 +86,18 @@ class Server:
         else:
             pass
         pass
+        
+        listDis = tools.saveProvinciasJSON(listDis)
+
+        dictDis = {"distritos": listDis}
+        
+        JSONlistDis = json.dumps(dictDis)
+        
+        print(JSONlistDis)
+        
+        socket.send_string(JSONlistDis)
+        
+        print("JSON Distritos Sent")
         
 objServer = Server()
 

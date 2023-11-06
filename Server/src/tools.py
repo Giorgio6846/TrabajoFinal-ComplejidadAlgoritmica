@@ -34,6 +34,10 @@ def getTipoNodo(string):
         return "Prov"
     elif re.search("Distrito..", string):
         return "Dis"
+    elif re.search("Pais.", string):
+        return "Pais"
+    else:
+        return "Calle"
     
 def saveDepartamentosJSON(listDepartamentos):
     listDepartamentosTMP = []
