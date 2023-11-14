@@ -30,6 +30,8 @@ class Server:
         elif message["type"] == "listDistrito":
             print(message)
             self.JSONlistDistrito(message)
+        elif message["type"] == "listCalle":
+            print(message)
             
     def JSONlistDepartamento(self, JSONReceived):
         

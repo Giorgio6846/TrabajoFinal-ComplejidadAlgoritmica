@@ -6,7 +6,7 @@ nombrePais = "Pais.Peru"
 if platform.system() == 'Windows':
     filePath = "../Generador/Dataframe.csv"
 elif platform.system() == 'Darwin':
-    filePath = "Generador/Dataframe.csv"
+    filePath = "../Generador/Dataframe.csv"
 else:
     filePath = "Generador/Dataframe.csv"
     

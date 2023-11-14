@@ -12,7 +12,6 @@ socket.connect("tcp://localhost:5555")
 
 messageServer = json.dumps(
     {   
-        "type": "ListDepartamentos",
         "Departamentos": "NULL",
         "Provincias": "NULL",
         "Distritos": "NULL"
