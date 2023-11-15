@@ -2,33 +2,6 @@ import src.tools as tools
 
 startingNode = "Pais.Peru"
 
-def getAllProvincias(Grafo):
-    visited = []
-    
-    visited.append(startingNode)
-    queue = getAll(Grafo, 1)
-    
-    provinciasDep = []
-    
-    """
-    for item in queue:
-        #print(item)
-        for node in Grafo.edges(item):
-            if getTipoNodo(node[1]) == "Prov":
-                provinciasDep.append(node[1])        
-        
-        visited.append(item)
-    """
-    
-    while queue:
-        item = queue.pop()
-        
-        for nodo0, nodo1 in Grafo.edges(item):
-            if tools.getTipoNodo(nodo1) == "Prov":
-                provinciasDep.append(nodo1)
-            
-    return provinciasDep
-
 def getProvincia(Grafo, Departamento):
     #Departamento = addDepartamentoString(Departamento)
     visited = []
@@ -45,7 +18,6 @@ def getProvincia(Grafo, Departamento):
                     provinciasDep.append(nodosConectados1)
                     
     return provinciasDep
-
 
 def getAll(Grafo, Nivel):
     listDatos = []

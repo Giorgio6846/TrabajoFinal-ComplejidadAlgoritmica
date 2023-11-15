@@ -1,4 +1,5 @@
 from multiprocessing.managers import ListProxy
+from pickle import NONE
 import time
 import json
 import zmq
@@ -12,6 +13,8 @@ context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:5555")
 
+NONE_DATA = None
+
 
 class Server:
     def __init__(self):
@@ -20,14 +23,10 @@ class Server:
         print("Graph loaded")
 
     def parseJSON(self, message):
-        print(type(message))
-        print(message["Departamento"])
+        if message["Departamento"] == "NULL":
+            message["Departamento"] = None
 
-        """
-        "Departamento": "NULL",
-        "Provincia": "NULL",
-        "Distrito": "NULL",
-        """
+        print(message)
 
         """
         "listDep": "A"
@@ -36,6 +35,10 @@ class Server:
         "Calles": "D"
         "STATS": "E"
         """
+
+        print(message["Departamento"], type(message["Departamento"]))
+        print(message["Provincia"], type(message["Provincia"]))
+        print(message["Distrito"], type(message["Distrito"]))
 
         listDep = self.listDepartamento(message)
         listProv = self.listProvincia(message)
@@ -62,7 +65,7 @@ class Server:
     def listDepartamento(self, JSON):
         listDep = []
 
-        if JSON["Departamento"] == "None":
+        if JSON["Departamento"] == NONE_DATA:
             listDep = algo.getAll(self.Grafo, 1)
             listDep = tools.saveDepartamentosJSON(listDep)
 
@@ -71,12 +74,14 @@ class Server:
     def listProvincia(self, JSON):
         listProv = []
 
-        if JSON["Departamento"] == "None" and JSON["Provincia"] == "None":
+        if JSON["Departamento"] == NONE_DATA and JSON["Provincia"] == NONE_DATA:
             listProv = algo.getAll(self.Grafo, 2)
             listProv = tools.saveProvinciasJSON(listProv)
 
-        elif JSON["Departamento"] != "None" and JSON["Provincia"] == "None":
-            listProv = algo.getProvincia(self.Grafo, JSON["Departamento"])
+        elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] == NONE_DATA:
+            listProv = algo.getProvincia(
+                self.Grafo, tools.addDepartamentoString(JSON["Departamento"])
+            )
             listProv = tools.saveProvinciasJSON(listProv)
 
         return listProv
@@ -84,9 +89,21 @@ class Server:
     def listDistrito(self, JSON):
         listDist = []
 
-        if JSON["Departamento"] == "None" and JSON["Provincia"] == "None":
+        if JSON["Departamento"] == NONE_DATA and JSON["Provincia"] == NONE_DATA:
             listDist = algo.getAll(self.Grafo, 3)
             listDist = tools.saveDistritosJSON(listDist)
+
+        elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] == NONE_DATA:
+            listDist = algo.getDistritoD(
+                self.Grafo, tools.addDepartamentoString(JSON["Departamento"])
+            )
+            listDist = tools.saveDistritosJSON(listDist)
+
+        elif JSON["Departamento"] == NONE_DATA and JSON["Provincia"] != NONE_DATA:
+            pass
+
+        elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] != NONE_DATA:
+            pass
 
         return listDist
 
@@ -94,97 +111,14 @@ class Server:
         listCalles = []
 
         if (
-            JSON["Departamento"] == "None"
-            and JSON["Provincia"] == "None"
-            and JSON["Distrito"] == "None"
+            JSON["Departamento"] == NONE_DATA
+            and JSON["Provincia"] == NONE_DATA
+            and JSON["Distrito"] == NONE_DATA
         ):
             listCalles = algo.getAll(self.Grafo, 4)
             listCalles = tools.saveDepartamentosJSON(listCalles)
 
         return listCalles
-
-    """
-    def JSONlistDepartamento(self, JSONReceived):
-        # Obtener todos los departamentos
-        listDep = algo.getAll(self.Grafo, 1)
-        listDep = tools.saveDepartamentosJSON(listDep)
-
-        dictDep = {"departamentos": listDep}
-
-        JSONlistDep = json.dumps(dictDep)
-
-        print(JSONlistDep)
-        socket.send_string(JSONlistDep)
-
-        print("JSON Departamentos Sent")
-
-    def JSONlistProvincia(self, JSONReceived):
-        listProv = []
-
-        # Obtener todas las provincias
-        if JSONReceived["Departamento"] == "NULL":
-            listProv = algo.getAll(self.Grafo, 2)
-
-        # Obtener ciertas provincias
-        else:
-            listProv = algo.getProvincia(
-                self.Grafo, tools.addDepartamentoString(JSONReceived["Departamento"])
-            )
-            pass
-
-        listProv = tools.saveProvinciasJSON(listProv)
-
-        dictProv = {"provincias": listProv}
-
-        JSONlistProv = json.dumps(dictProv)
-
-        print(JSONlistProv)
-
-        socket.send_string(JSONlistProv)
-
-        print("JSON Provincias Sent")
-
-    def JSONlistDistrito(self, JSONReceived):
-        listDis = []
-
-        if (
-            JSONReceived["Provincia"] == "NULL"
-            and JSONReceived["Departamento"] == "NULL"
-        ):
-            # Obtener todos los distritos
-            listDis = algo.getAll(self.Grafo, 3)
-        elif (
-            JSONReceived["Provincia"] != "NULL"
-            and JSONReceived["Departamento"] == "NULL"
-        ):
-            # Obtener ciertos distritos - Provincias
-            pass
-        # Obtener ciertos distritos - Departamento
-        elif (
-            JSONReceived["Provincia"] == "NULL"
-            and JSONReceived["Departamento"] != "NULL"
-        ):
-            listDis = algo.getDistritoD(
-                self.Grafo, tools.addDepartamentoString(JSONReceived["Departamento"])
-            )
-        # Obtener cierto distrito - Departamento y Provincia
-        else:
-            pass
-        pass
-
-        listDis = tools.saveDistritosJSON(listDis)
-        print(listDis)
-
-        dictDis = {"distritos": listDis}
-
-        JSONlistDis = json.dumps(dictDis)
-
-        print(JSONlistDis)
-
-        socket.send_string(JSONlistDis)
-
-        print("JSON Distritos Sent")
-    """
 
 
 objServer = Server()

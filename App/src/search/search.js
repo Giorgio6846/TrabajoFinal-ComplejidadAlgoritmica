@@ -6,7 +6,6 @@ var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
 var provinciaBuscar = document.getElementById('selectProvincia')
 var distritoBuscar = document.getElementById('selectDistrito')
 
-
 async function requestDataServer(requestData){
    requestJSON = JSON.stringify(requestData)
    receivedJSON = await run(requestJSON)
@@ -95,12 +94,10 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
    }
 }
 
-var provinciaId = document.getElementById("seccionProvincia");
-var distritoId = document.getElementById("seccionDistrito");
 
-if (localStorage.getItem('DepartamentoSelecionado') == "null") {
-   requestDepartamentos()
-}
+//if (localStorage.getItem('DepartamentoSelecionado') == "null") {
+//   requestDepartamentos()
+//}
 
 //requestProvincia()
 //requestDistrito()
@@ -114,21 +111,10 @@ async function requestDatos(){
 
    JSONdata = await requestDataServer(requestJSONData)
 
-   console.log(JSONdata["departamentos"])
+   addItemsToSelect(selectDepartamento, listaDepartamentos, JSONdata["listaDepartamentos"])
+   addItemsToSelect(selectProvincia, listaProvincias, JSONdata["listaProvincias"])
+   addItemsToSelect(selectDistrito, listaDistritos, JSONdata["listaDistritos"])
 
-   /*
-   for (i = 0; i < JSONdata["departamentos"].length; i++) {
-      var departamentoTMP = document.createElement("option");
-      departamentoTMP.text = JSONdata["departamentos"][i]
-      console.log(JSONdata["departamentos"][i])
-      selectDepartamento.add(departamentoTMP)
-      listaDepartamentos.push(departamentoTMP)
-   }
-   */
 }
 
 requestDatos()
-
-//console.log(departamentoBuscar)
-//console.log(provinciaBuscar)
-//console.log(distritoBuscar)
