@@ -21,7 +21,7 @@ messageServer = json.dumps(
 #  Do 10 requests, waiting each time for a response
 for request in range(10):
     print(f"Sending request {request} …")
-    socket.send_json(messageServer)
+    socket.send_string(messageServer)
 
     #  Get the reply.
     message = socket.recv_json()

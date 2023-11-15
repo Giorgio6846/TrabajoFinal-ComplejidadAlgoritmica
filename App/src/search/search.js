@@ -3,6 +3,9 @@ var listaProvincias = []
 var listaDistritos = []
 
 var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
+var provinciaBuscar = document.getElementById('selectProvincia')
+var distritoBuscar = document.getElementById('selectDistrito')
+
 
 async function requestDataServer(requestData){
    requestJSON = JSON.stringify(requestData)
@@ -16,8 +19,8 @@ async function requestDepartamentos(){
    requestJSONData = {
       "type": "listDepartamento",
       "Departamento": departamentoBuscar,
-      "Provincia": "NULL",
-      "Distrito": "NULL",
+      "Provincia": "null",
+      "Distrito": "null",
    };
 
    JSONdata = await requestDataServer(requestJSONData)
@@ -49,7 +52,6 @@ function resetDepartamento(){
 async function requestProvincia() {
    //Se cambia el departamento que depende del seleccionado
    requestJSONData = {
-      "type": "listProvincia",
       "Departamento": departamentoBuscar,
       "Provincia": "NULL",
       "Distrito": "NULL",
@@ -96,9 +98,37 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
 var provinciaId = document.getElementById("seccionProvincia");
 var distritoId = document.getElementById("seccionDistrito");
 
-if (localStorage.getItem('DepartamentoSelecionado') == "NULL") {
+if (localStorage.getItem('DepartamentoSelecionado') == "null") {
    requestDepartamentos()
 }
 
-requestProvincia()
-requestDistrito()
+//requestProvincia()
+//requestDistrito()
+
+async function requestDatos(){
+   requestJSONData = {
+      "Departamento": departamentoBuscar,
+      "Provincia": provinciaBuscar,
+      "Distrito": distritoBuscar,
+   };
+
+   JSONdata = await requestDataServer(requestJSONData)
+
+   console.log(JSONdata["departamentos"])
+
+   /*
+   for (i = 0; i < JSONdata["departamentos"].length; i++) {
+      var departamentoTMP = document.createElement("option");
+      departamentoTMP.text = JSONdata["departamentos"][i]
+      console.log(JSONdata["departamentos"][i])
+      selectDepartamento.add(departamentoTMP)
+      listaDepartamentos.push(departamentoTMP)
+   }
+   */
+}
+
+requestDatos()
+
+//console.log(departamentoBuscar)
+//console.log(provinciaBuscar)
+//console.log(distritoBuscar)
