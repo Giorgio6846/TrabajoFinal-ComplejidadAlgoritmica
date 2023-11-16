@@ -7,11 +7,24 @@
     <script src = "src/Functions/calls.js"   ></script>
     <script type="module" src="src/index/mapSelector.js"></script>
     <script src = "src/index/mapSelector.js" ></script>
+
+    <style>
+
+        .image {
+            height:90vh;
+            width:95vw;
+            object-fit:contain;
+            display:block;
+        }
+    </style>
+
 </head>
 
 <body>
     <button id = "buttonSearch" onClick>Search</button>
-    <object data = "Assets/Peru.svg" type="image/svg+xml"z id = "peruSvg"></object>
+    <div class = "box">
+        <object class = "image" data = "Assets/Peru.svg" type="image/svg+xml"z id = "peruSvg"></object>
+    </div>
 </body>
 
 <script>
