@@ -2,10 +2,6 @@ var listaDepartamentos = []
 var listaProvincias = []
 var listaDistritos = []
 
-var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
-var provinciaBuscar = document.getElementById('selectProvincia')
-var distritoBuscar = document.getElementById('selectDistrito')
-
 async function requestDataServer(requestData){
    requestJSON = JSON.stringify(requestData)
    receivedJSON = await run(requestJSON)
@@ -14,73 +10,19 @@ async function requestDataServer(requestData){
    return receivedJSON
 }
 
-async function requestDepartamentos(){
-   requestJSONData = {
-      "type": "listDepartamento",
-      "Departamento": departamentoBuscar,
-      "Provincia": "null",
-      "Distrito": "null",
-   };
-
-   JSONdata = await requestDataServer(requestJSONData)
-
-   console.log(JSONdata["departamentos"])
-
-   var selectDepartamento = document.getElementById("selectDepartamento")
-
-   /*
-   for (i = 0; i < JSONdata["departamentos"].length; i++) {
-      var departamentoTMP = document.createElement("option");
-      departamentoTMP.text = JSONdata["departamentos"][i]
-      console.log(JSONdata["departamentos"][i])
-      selectDepartamento.add(departamentoTMP)
-      listaDepartamentos.push(departamentoTMP)
-   }
-   */
-   addItemsToSelect(selectDepartamento, listaDepartamentos, JSONdata["departamentos"])
-}
-
-function resetDepartamento(){
+function resetData(){
    for(var items in listaDepartamentos)
    {
       listaDepartamentos.remove()
-      console.log(items)
    }
-}
-
-async function requestProvincia() {
-   //Se cambia el departamento que depende del seleccionado
-   requestJSONData = {
-      "Departamento": departamentoBuscar,
-      "Provincia": "NULL",
-      "Distrito": "NULL",
-   };
-
-   JSONData = await requestDataServer(requestJSONData)
-
-   console.log(JSONData["provincias"])
-
-   var selectProvincia = document.getElementById("selectProvincia")
-
-   addItemsToSelect(selectProvincia, listaProvincias, JSONData["provincias"])
-}
-
-async function requestDistrito() {
-   //Se cambia el departamento que depende del seleccionado
-   requestJSONData = {
-      "type": "listDistrito",
-      "Departamento": departamentoBuscar,
-      "Provincia": "NULL",
-      "Distrito": "NULL",
-   };
-
-   JSONData = await requestDataServer(requestJSONData)
-
-   console.log(JSONData["distritos"])
-
-   var selectDistrito = document.getElementById("selectDistrito")
-
-   addItemsToSelect(selectDistrito, listaDistritos, JSONData["distritos"])
+   for(var items in listaDistritos)
+   {
+      listaDistritos.remove()
+   }
+   for(var items in listaProvincias)
+   {
+      listaProvincias.remove()
+   }
 }
 
 function addItemsToSelect(selectItem, listSelect, JSONData){
@@ -88,26 +30,24 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
    {
       var optionTMP = document.createElement("option");
       optionTMP.text = JSONData[i]
-      console.log(JSONData[i])
+      //console.log(JSONData[i])
       selectItem.add(optionTMP)
       listSelect.push(optionTMP)
    }
 }
 
-
-//if (localStorage.getItem('DepartamentoSelecionado') == "null") {
-//   requestDepartamentos()
-//}
-
-//requestProvincia()
-//requestDistrito()
-
 async function requestDatos(){
+   var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
+   var provinciaBuscar = localStorage.getItem('ProvinciaSelecionado')
+   var distritoBuscar = localStorage.getItem('DistritoSelecionado')
+
    requestJSONData = {
       "Departamento": departamentoBuscar,
       "Provincia": provinciaBuscar,
       "Distrito": distritoBuscar,
    };
+
+   console.log(requestJSONData)
 
    JSONdata = await requestDataServer(requestJSONData)
 
@@ -116,6 +56,7 @@ async function requestDatos(){
    addItemsToSelect(selectDistrito, listaDistritos, JSONdata["listaDistritos"])
 
    let table = document.querySelector("table")
+   clearTable(table)
    generateTable(table, JSONdata["listCalles"])
 }
 
@@ -127,6 +68,12 @@ function generateTable(table, data){
          let text = document.createTextNode(element[key]);
          cell.appendChild(text);
       }
+   }
+}
+
+function clearTable(table){
+   for(var i = 1; i < table.rows.length;){
+      table.deleteRow(i)
    }
 }
 

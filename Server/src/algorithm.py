@@ -116,9 +116,9 @@ def getCallesD(Grafo, Departamento):
                         queue.append(nodo1)
 
             for nodo0, nodo1 in Grafo.edges(item):
-                if tools.getTipoNodo(nodo1) != "Calle":
+                if tools.getTipoNodo(nodo1) == "Dis":
                     queue.append(nodo1)
-                else:
+                if tools.getTipoNodo(nodo1) == "Calle":
                     dictTMP = {
                         "Calle": Grafo.nodes[nodo1]["direccion"],
                         "Departamento": Grafo.nodes[nodo1]["departamento"],
@@ -220,6 +220,7 @@ def getDistritoDP(Grafo, departamento, provincia):
             visited.append(item)
 
     return distritoDep
+
 
 def getCalles(Grafo):
     listCalles = []

@@ -1,5 +1,3 @@
-from multiprocessing.managers import ListProxy
-from pickle import NONE
 import time
 import json
 import zmq
@@ -23,8 +21,12 @@ class Server:
         print("Graph loaded")
 
     def parseJSON(self, message):
-        if message["Departamento"] == "NULL":
+        if message["Departamento"] == "NULL" or message["Departamento"] == "":
             message["Departamento"] = None
+        if message["Provincia"] == "":
+            message["Provincia"] = None
+        if message["Distrito"] == "":
+            message["Distrito"] = None
 
         print(message)
 

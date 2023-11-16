@@ -90,7 +90,6 @@
         <select name="departamento" id="selectDepartamento">
           <option value="">Seleccione un departamento</option>
         </select>
-        <input type="submit" value="Enviar">
       </div>
 
       <div class="line-break"></div>
@@ -100,7 +99,6 @@
         <select name="provincia" id="selectProvincia">
           <option value="">Seleccione una provincia</option>
         </select>
-        <input type="submit" value="Enviar">
       </div>
 
       <div class="line-break"></div>
@@ -110,8 +108,8 @@
         <select name="distrito" id="selectDistrito">
           <option value="">Seleccione un distrito</option>
         </select>
-        <input type="submit" value="Enviar">
       </div>
+        <input type="submit" value="Enviar" id = "SearchData" onclick="requestDatos()">
 
       <div id = "Table">
         <table>
@@ -159,6 +157,31 @@
   else {
     document.getElementById("divDepartamento").setAttribute("hidden", "hidden")
   }
+</script>
+
+<script>
+
+  var optionDepartamento = document.getElementById("selectDepartamento")
+  var optionProvincia = document.getElementById("selectProvincia")
+  var optionDistrito = document.getElementById("selectDistrito")
+  
+  optionDepartamento.addEventListener("change", function(event){
+    console.log(event.target.value)
+    localStorage.setItem('DepartamentoSelecionado', event.target.value)
+  });
+
+  optionProvincia.addEventListener("change", function (event) {
+    console.log(event.target.value)
+    localStorage.setItem('ProvinciaSelecionado', event.target.value) 
+  });
+
+  optionDistrito.addEventListener("change", function (event) {
+      console.log(event.target.value)
+      localStorage.setItem('DistritoSelecionado', event.target.value)
+  });
+
+
+
 </script>
 
 </html>
