@@ -100,10 +100,18 @@ class Server:
             listDist = tools.saveDistritosJSON(listDist)
 
         elif JSON["Departamento"] == NONE_DATA and JSON["Provincia"] != NONE_DATA:
-            pass
+            listDist = algo.getDistritoP(
+                self.Grafo, tools.addProvinciaString(JSON["Provincia"])
+            )
+            listDist = tools.saveDistritosJSON(listDist)
 
         elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] != NONE_DATA:
-            pass
+            listDist = algo.getDistritoDP(
+                self.Grafo,
+                tools.addDepartamentoString(JSON["Provincia"]),
+                tools.addProvinciaString(JSON["Provincia"]),
+            )
+            listDist = tools.saveDistritosJSON(listDist)
 
         return listDist
 
@@ -115,8 +123,16 @@ class Server:
             and JSON["Provincia"] == NONE_DATA
             and JSON["Distrito"] == NONE_DATA
         ):
-            listCalles = algo.getAll(self.Grafo, 4)
-            listCalles = tools.saveDepartamentosJSON(listCalles)
+            listCalles = algo.getCalles(self.Grafo)
+
+        if (
+            JSON["Departamento"] != NONE_DATA
+            and JSON["Provincia"] == NONE_DATA
+            and JSON["Distrito"] == NONE_DATA
+        ):
+            listCalles = algo.getCallesD(
+                self.Grafo, tools.addDepartamentoString(JSON["Departamento"])
+            )
 
         return listCalles
 
