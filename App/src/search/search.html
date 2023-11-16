@@ -22,7 +22,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 20px;
-            width: 30%;
+            width: 100%;
             position: relative;
         }
 
@@ -64,48 +64,88 @@
       #indexPage:hover {
           background-color: #222;
       }
+
+      .flex-container{
+        display: flex;
+      }
+
+      .flex-SearchTable{
+        flex: 4
+      }
+
+      .flex-stats{
+        flex: 1;
+        margin-right: 20px;
+      }
+
+
   </style>
 </head>
 
 <body>
-  <div id = "divDepartamento">
-    <label for="departamento">Departamento:</label>
-    <select name="departamento" id="selectDepartamento">
-      <option value="">Seleccione un departamento</option>
-    </select>
-    <input type="submit" value="Enviar">
-  </div>
+  <div class = "flex-container">
+    <div class = "flex-SearchTable">
+      <div id="divDepartamento">
+        <label for="departamento">Departamento:</label>
+        <select name="departamento" id="selectDepartamento">
+          <option value="">Seleccione un departamento</option>
+        </select>
+        <input type="submit" value="Enviar">
+      </div>
 
-  <div class="line-break"></div>
+      <div class="line-break"></div>
 
-  <div id = "divProvincia">
-    <label for="provincia">Provincia:</label>
-    <select name="provincia" id="selectProvincia">
-      <option value="">Seleccione una provincia</option>
-    </select>
-    <input type="submit" value="Enviar">
-  </div>
+      <div id="divProvincia">
+        <label for="provincia">Provincia:</label>
+        <select name="provincia" id="selectProvincia">
+          <option value="">Seleccione una provincia</option>
+        </select>
+        <input type="submit" value="Enviar">
+      </div>
 
-  <div class="line-break"></div>
+      <div class="line-break"></div>
 
-  <div id = "divDistrito">
-    <label for="distrito">Distrito:</label>
-    <select name="distrito" id="selectDistrito">
-      <option value="">Seleccione un distrito</option>
-    </select>
-    <input type="submit" value="Enviar">
-  </div>
-</div>
+      <div id="divDistrito">
+        <label for="distrito">Distrito:</label>
+        <select name="distrito" id="selectDistrito">
+          <option value="">Seleccione un distrito</option>
+        </select>
+        <input type="submit" value="Enviar">
+      </div>
 
-  <div class="sidebar">
-    <div class="stats">
-      STATS
+      <div id = "Table">
+        <table>
+          <thead>
+            <tr>
+              <th> Calle </th>
+              <th> Departamento </th>
+              <th> Provincia </th>
+              <th> Distrito </th>
+              <th> Tipo vivienda </th>
+              <th> Cantidad cuartos </th>
+              <th> Material pared </th>
+              <th> Material techo </th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
     </div>
-    <!-- Puedes agregar aquí tus estadísticas o información adicional -->
+
+    <div class = "flex-stats">
+      <div class="sidebar">
+        <div class="stats">
+          STATS
+        </div>
+        <!-- Puedes agregar aquí tus estadísticas o información adicional -->
+      </div>
+
   </div>
-</div>
+
+ </div>
 
   <button id="indexPage" onClick>Regresar</button>
+  <br>
 </body>
 
 <script>
