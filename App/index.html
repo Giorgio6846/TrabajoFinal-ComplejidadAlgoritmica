@@ -30,7 +30,9 @@
 <script>
     const DepartamentoSelecionado = "NULL"
 
-    localStorage.setItem('DepartamentoSelecionado', DepartamentoSelecionado)
+    localStorage.setItem('DepartamentoSelecionado', DepartamentoSelecionado);
+    localStorage.setItem('ProvinciaSelecionado', "NULL");
+    localStorage.setItem('DistritoSelecionado', "NULL");
 
     buttonSearch.addEventListener("click", () =>{
         searchWindow()

@@ -115,14 +115,15 @@
         <table>
           <thead>
             <tr>
-              <th> Calle </th>
-              <th> Departamento </th>
-              <th> Provincia </th>
-              <th> Distrito </th>
-              <th> Tipo vivienda </th>
-              <th> Cantidad cuartos </th>
-              <th> Material pared </th>
-              <th> Material techo </th>
+              <th>Calle</th>
+              <th>Departamento</th>
+              <th>Provincia</th>
+              <th>Distrito</th>
+              <th>Tipo vivienda</th>
+              <th>Cantidad cuartos</th>
+              <th>Material pared</th>
+              <th>Material techo</th>
+              <th>Material piso</th>
             </tr>
           </thead>
         </table>
@@ -168,16 +169,33 @@
   optionDepartamento.addEventListener("change", function(event){
     console.log(event.target.value)
     localStorage.setItem('DepartamentoSelecionado', event.target.value)
+    
+    document.getElementById("selectProvincia").selectedIndex = -1;
+    document.getElementById("selectDistrito").selectedIndex = -1;
+
+    localStorage.setItem('ProvinciaSelecionado', "NULL") 
+    localStorage.setItem('DistritoSelecionado', "NULL") 
+
+    requestDatos()
   });
 
   optionProvincia.addEventListener("change", function (event) {
     console.log(event.target.value)
     localStorage.setItem('ProvinciaSelecionado', event.target.value) 
+
+
+    document.getElementById("selectDistrito").selectedIndex = -1 ;
+    localStorage.setItem('DistritoSelecionado', "NULL") 
+
+    requestDatos()
   });
 
   optionDistrito.addEventListener("change", function (event) {
-      console.log(event.target.value)
-      localStorage.setItem('DistritoSelecionado', event.target.value)
+    console.log(event.target.value)
+
+    localStorage.setItem('DistritoSelecionado', event.target.value)
+
+    requestDatos()
   });
 
 

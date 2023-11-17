@@ -23,9 +23,9 @@ class Server:
     def parseJSON(self, message):
         if message["Departamento"] == "NULL" or message["Departamento"] == "":
             message["Departamento"] = None
-        if message["Provincia"] == "":
+        if message["Provincia"] == "NULL" or message["Provincia"] == "":
             message["Provincia"] = None
-        if message["Distrito"] == "":
+        if message["Distrito"] == "NULL" or message["Distrito"] == "":
             message["Distrito"] = None
 
         print(message)
@@ -46,6 +46,7 @@ class Server:
         listProv = self.listProvincia(message)
         listDist = self.listDistrito(message)
         listCalles = self.listCalles(message)
+        listStats = self.listStats(listCalles)
 
         print(listDep)
         print(listProv)
@@ -57,7 +58,7 @@ class Server:
             "listaProvincias": listProv,
             "listaDistritos": listDist,
             "listCalles": listCalles,
-            "listStats": {},
+            "listStats": [listStats],
         }
 
         JSONinf = json.dumps(dictInformacion)
@@ -94,25 +95,8 @@ class Server:
         if JSON["Departamento"] == NONE_DATA and JSON["Provincia"] == NONE_DATA:
             listDist = algo.getAll(self.Grafo, 3)
             listDist = tools.saveDistritosJSON(listDist)
-
-        elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] == NONE_DATA:
-            listDist = algo.getDistritoD(
-                self.Grafo, tools.addDepartamentoString(JSON["Departamento"])
-            )
-            listDist = tools.saveDistritosJSON(listDist)
-
-        elif JSON["Departamento"] == NONE_DATA and JSON["Provincia"] != NONE_DATA:
-            listDist = algo.getDistritoP(
-                self.Grafo, tools.addProvinciaString(JSON["Provincia"])
-            )
-            listDist = tools.saveDistritosJSON(listDist)
-
-        elif JSON["Departamento"] != NONE_DATA and JSON["Provincia"] != NONE_DATA:
-            listDist = algo.getDistritoDP(
-                self.Grafo,
-                tools.addDepartamentoString(JSON["Provincia"]),
-                tools.addProvinciaString(JSON["Provincia"]),
-            )
+        else:
+            listDist = algo.getDistrito(self.Grafo, JSON)
             listDist = tools.saveDistritosJSON(listDist)
 
         return listDist
@@ -125,19 +109,22 @@ class Server:
             and JSON["Provincia"] == NONE_DATA
             and JSON["Distrito"] == NONE_DATA
         ):
-            listCalles = algo.getCalles(self.Grafo)
-
-        if (
-            JSON["Departamento"] != NONE_DATA
-            and JSON["Provincia"] == NONE_DATA
-            and JSON["Distrito"] == NONE_DATA
-        ):
-            listCalles = algo.getCallesD(
-                self.Grafo, tools.addDepartamentoString(JSON["Departamento"])
-            )
-
+            listCalles = algo.getAllCalles(self.Grafo)
+        else:
+            listCalles = algo.getCalles(self.Grafo, JSON)
         return listCalles
 
+    def listStats(self, list):
+        dictVivienda, dictParedes, dictTecho, dictPiso = algo.getStats(list)
+
+        dictStats = {
+            "statsViviendas": dictVivienda,
+            "statsParedes": dictParedes,
+            "statsTecho": dictTecho,
+            "statsPiso": dictPiso,
+        }
+
+        return dictStats
 
 objServer = Server()
 

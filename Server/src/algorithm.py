@@ -100,7 +100,7 @@ def getDistritoD(Grafo, departamento):
     return distritoDep
 
 
-def getCallesD(Grafo, Departamento):
+def getCalles(Grafo, messageJSON):
     listCalles = []
     visited = []
 
@@ -110,27 +110,54 @@ def getCallesD(Grafo, Departamento):
         item = queue.pop()
 
         if item not in visited:
-            if item == Departamento:
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Prov":
-                        queue.append(nodo1)
+            if tools.getTipoNodo(item) == "Dep":
+                if messageJSON["Departamento"] == None:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
 
-            for nodo0, nodo1 in Grafo.edges(item):
-                if tools.getTipoNodo(nodo1) == "Dis":
-                    queue.append(nodo1)
-                if tools.getTipoNodo(nodo1) == "Calle":
-                    dictTMP = {
-                        "Calle": Grafo.nodes[nodo1]["direccion"],
-                        "Departamento": Grafo.nodes[nodo1]["departamento"],
-                        "Provincia": Grafo.nodes[nodo1]["provincia"],
-                        "Distrito": Grafo.nodes[nodo1]["distrito"],
-                        "Tipo de Vivienda": Grafo.nodes[nodo1]["tipoVivienda"],
-                        "Cantidad Cuartos": Grafo.nodes[nodo1]["cuartos"],
-                        "Material pared": Grafo.nodes[nodo1]["material_paredes"],
-                        "Material techo": Grafo.nodes[nodo1]["material_techo"],
-                    }
-                    # print(dictTMP)
-                    listCalles.append(dictTMP)
+                elif tools.addDepartamentoString(messageJSON["Departamento"]) == item:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+            elif tools.getTipoNodo(item) == "Prov":
+                if messageJSON["Provincia"] == None:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+                elif tools.addProvinciaString(messageJSON["Provincia"]) == item:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+            elif tools.getTipoNodo(item) == "Dis":
+                if messageJSON["Distrito"] == None:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+                elif tools.addDistritoString(messageJSON["Distrito"]) == item:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+            elif tools.getTipoNodo(item) == "Calle":
+                dictTMP = {
+                    "Calle": Grafo.nodes[item]["direccion"],
+                    "Departamento": Grafo.nodes[item]["departamento"],
+                    "Provincia": Grafo.nodes[item]["provincia"],
+                    "Distrito": Grafo.nodes[item]["distrito"],
+                    "Tipo de Vivienda": Grafo.nodes[item]["tipoVivienda"],
+                    "Cantidad Cuartos": Grafo.nodes[item]["cuartos"],
+                    "Material pared": Grafo.nodes[item]["material_paredes"],
+                    "Material techo": Grafo.nodes[item]["material_techo"],
+                    "Material piso": Grafo.nodes[item]["material_piso"],
+                }
+
+                listCalles.append(dictTMP)
+
             visited.append(item)
 
     return listCalles
@@ -180,6 +207,50 @@ def getDistritoP(Grafo, provincia):
     return distritoDep
 
 
+def getDistrito(Grafo, messageJSON):
+    visited = []
+
+    visited.append(startingNode)
+    queue = getAll(Grafo, 1)
+
+    distritoList = []
+
+    while queue:
+        item = queue.pop()
+
+        if item not in visited:
+            if tools.getTipoNodo(item) == "Dep":
+                if messageJSON["Departamento"] == None:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+                elif tools.addDepartamentoString(messageJSON["Departamento"]) == item:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+            elif tools.getTipoNodo(item) == "Prov":
+                if messageJSON["Provincia"] == None:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+                elif tools.addProvinciaString(messageJSON["Provincia"]) == item:
+                    for nodo0, nodo1 in Grafo.edges(item):
+                        if item not in visited:
+                            queue.append(nodo1)
+
+            elif tools.getTipoNodo(item) == "Dis":
+                distritoList.append(
+                    Grafo.nodes[item]["provincia"] + "." + Grafo.nodes[item]["Label"]
+                )
+
+        visited.append(item)
+
+    return distritoList
+
+
 def getDistritoDP(Grafo, departamento, provincia):
     # Departamento = addDepartamentoString(Departamento)
 
@@ -222,7 +293,7 @@ def getDistritoDP(Grafo, departamento, provincia):
     return distritoDep
 
 
-def getCalles(Grafo):
+def getAllCalles(Grafo):
     listCalles = []
     visited = []
 
@@ -237,17 +308,48 @@ def getCalles(Grafo):
                     queue.append(nodo1)
                 else:
                     dictTMP = {
-                        "Calle": Grafo.nodes[nodo1]["direccion"],
-                        "Departamento": Grafo.nodes[nodo1]["departamento"],
-                        "Provincia": Grafo.nodes[nodo1]["provincia"],
-                        "Distrito": Grafo.nodes[nodo1]["distrito"],
-                        "Tipo de Vivienda": Grafo.nodes[nodo1]["tipoVivienda"],
-                        "Cantidad Cuartos": Grafo.nodes[nodo1]["cuartos"],
-                        "Material pared": Grafo.nodes[nodo1]["material_paredes"],
-                        "Material techo": Grafo.nodes[nodo1]["material_techo"],
+                        "Calle": Grafo.nodes[item]["direccion"],
+                        "Departamento": Grafo.nodes[item]["departamento"],
+                        "Provincia": Grafo.nodes[item]["provincia"],
+                        "Distrito": Grafo.nodes[item]["distrito"],
+                        "Tipo de Vivienda": Grafo.nodes[item]["tipoVivienda"],
+                        "Cantidad Cuartos": Grafo.nodes[item]["cuartos"],
+                        "Material pared": Grafo.nodes[item]["material_paredes"],
+                        "Material techo": Grafo.nodes[item]["material_techo"],
+                        "Material piso": Grafo.nodes[item]["material_piso"],
                     }
                     # print(dictTMP)
                     listCalles.append(dictTMP)
             visited.append(item)
 
     return listCalles
+
+
+def getStats(list):
+    dictVivienda = {}
+    dictParedes = {}
+    dictTecho = {}
+    dictPiso = {}
+
+    for index in list:
+        if index["Tipo de Vivienda"] in dictVivienda:
+            dictVivienda[index["Tipo de Vivienda"]] += 1
+        else:
+            dictVivienda[index["Tipo de Vivienda"]] = 1
+
+        if index["Material pared"] in dictParedes:
+            dictParedes[index["Material pared"]] += 1
+        else:
+            dictParedes[index["Material pared"]] = 1
+
+        if index["Material techo"] in dictTecho:
+            dictTecho[index["Material techo"]] += 1
+        else:
+            dictTecho[index["Material techo"]] = 1
+
+        if index["Material piso"] in dictPiso:
+            dictPiso[index["Material piso"]] += 1
+        else:
+            dictPiso[index["Material piso"]] = 1
+
+    return dictVivienda, dictParedes, dictTecho, dictPiso
