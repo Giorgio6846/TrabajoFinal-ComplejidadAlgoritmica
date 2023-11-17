@@ -3,83 +3,7 @@
 <head>
     <script src="../serverConnection/connect.js"></script>
     <script src = "search.js"></script>
-    <style>
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f0f0f0;
-          padding: 30px;
-      }
-
-      .container {
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          padding: 20px;
-      }
-
-      .sidebar {
-        background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 100%;
-            position: relative;
-        }
-
-      .stats {
-        font-weight: bold;
-            position: absolute; /* Habilita el posicionamiento absoluto */
-        }
-
-      .label {
-          font-weight: bold;
-      }
-
-      input[type="submit"] {
-          width: 5%;
-          padding: 10px;
-      }
-
-      select{
-        width: 15%;
-          padding: 10px;
-          margin: 5px 0;
-      }
-
-      .line-break {
-          margin-top: 10px; /* Adds space between elements */
-      }
-
-      #indexPage {
-        position: absolute; 
-            top: 10px;
-            right: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-      }
-
-      #indexPage:hover {
-          background-color: #222;
-      }
-
-      .flex-container{
-        display: flex;
-      }
-
-      .flex-SearchTable{
-        flex: 4
-      }
-
-      .flex-stats{
-        flex: 1;
-        margin-right: 20px;
-      }
-
-
-  </style>
+    <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 
 <body>
@@ -111,22 +35,36 @@
       </div>
         <input type="submit" value="Enviar" id = "SearchData" onclick="requestDatos()">
 
-      <div id = "Table">
-        <table>
-          <thead>
-            <tr>
-              <th> Calle </th>
-              <th> Departamento </th>
-              <th> Provincia </th>
-              <th> Distrito </th>
-              <th> Tipo vivienda </th>
-              <th> Cantidad cuartos </th>
-              <th> Material pared </th>
-              <th> Material techo </th>
-            </tr>
-          </thead>
-        </table>
-      </div>
+        <div id="Table">
+          <table>
+            <thead>
+              <tr>
+                <th> Calle </th>
+                <th> Departamento </th>
+                <th> Provincia </th>
+                <th> Distrito </th>
+                <th> Tipo vivienda </th>
+                <th> Cantidad cuartos </th>
+                <th> Material pared </th>
+                <th> Material techo </th>
+              </tr>
+            </thead>
+            <!-- Aquí puedes agregar filas de ejemplo -->
+            <tbody>
+              <tr>
+                <td>Nombre de la calle</td>
+                <td>Nombre del departamento</td>
+                <td>Nombre de la provincia</td>
+                <td>Nombre del distrito</td>
+                <td>Tipo de vivienda</td>
+                <td>Cantidad de cuartos</td>
+                <td>Material de la pared</td>
+                <td>Material del techo</td>
+              </tr>
+              <!-- Puedes agregar más filas según sea necesario -->
+            </tbody>
+          </table>
+        </div>
 
     </div>
 

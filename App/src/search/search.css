@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 30px;
+}
+
+.container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .stats {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el contenido */
+    text-align: center; /* Centra horizontalmente el texto */
+  }
+
+select{
+  width: 15%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.line-break {
+    margin-top: 10px; /* Adds space between elements */
+}
+
+#indexPage {
+  position: absolute; 
+      top: 10px;
+      right: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+}
+
+#indexPage:hover {
+    background-color: #222;
+}
+
+.flex-container{
+  display: flex;
+}
+
+.flex-SearchTable{
+  flex: 4
+}
+
+.flex-stats{
+  flex: 1;
+  margin-right: 20px;
+}
+
+#Table {
+max-height: 700px; /* Define la altura máxima deseada */
+overflow-y: auto; /* Añade una barra de desplazamiento vertical si es necesario */
+margin-top: 1%;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+}
+
+th {
+background-color: #f2f2f2;
+position: sticky;
+top: 0;
+z-index: 1;
+}
