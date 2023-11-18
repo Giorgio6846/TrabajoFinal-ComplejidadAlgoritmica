@@ -10,7 +10,7 @@ async function requestDataServer(requestData){
    return receivedJSON
 }
 
-function addItemsToSelect(selectItem, listSelect, JSONData){
+async function addItemsToSelect(selectItem, listSelect, JSONData){
    for (var i = 0; i < JSONData.length; i++)
    {
       var optionTMP = document.createElement("option");
