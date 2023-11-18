@@ -31,13 +31,13 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
 }
 
 async function requestDatos(){
-   removeOptions(document.getElementById("selectDepartamento"))
-   removeOptions(document.getElementById("selectProvincia"))
-   removeOptions(document.getElementById("selectDistrito"))
+   //removeOptions(document.getElementById("selectDepartamento"))
+   //removeOptions(document.getElementById("selectProvincia"))
+   //removeOptions(document.getElementById("selectDistrito"))
 
-   var departamentoBuscar = localStorage.getItem('selectDepartamento')
-   var provinciaBuscar = localStorage.getItem('selectProvincia')
-   var distritoBuscar = localStorage.getItem('selectDistrito')
+   var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
+   var provinciaBuscar = localStorage.getItem('ProvinciaSelecionado')
+   var distritoBuscar = localStorage.getItem('DistritoSelecionado')
 
    requestJSONData = {
       "Departamento": departamentoBuscar,

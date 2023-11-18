@@ -308,15 +308,15 @@ def getAllCalles(Grafo):
                     queue.append(nodo1)
                 else:
                     dictTMP = {
-                        "Calle": Grafo.nodes[item]["direccion"],
-                        "Departamento": Grafo.nodes[item]["departamento"],
-                        "Provincia": Grafo.nodes[item]["provincia"],
-                        "Distrito": Grafo.nodes[item]["distrito"],
-                        "Tipo de Vivienda": Grafo.nodes[item]["tipoVivienda"],
-                        "Cantidad Cuartos": Grafo.nodes[item]["cuartos"],
-                        "Material pared": Grafo.nodes[item]["material_paredes"],
-                        "Material techo": Grafo.nodes[item]["material_techo"],
-                        "Material piso": Grafo.nodes[item]["material_piso"],
+                        "Calle": Grafo.nodes[nodo1]["direccion"],
+                        "Departamento": Grafo.nodes[nodo1]["departamento"],
+                        "Provincia": Grafo.nodes[nodo1]["provincia"],
+                        "Distrito": Grafo.nodes[nodo1]["distrito"],
+                        "Tipo de Vivienda": Grafo.nodes[nodo1]["tipoVivienda"],
+                        "Cantidad Cuartos": Grafo.nodes[nodo1]["cuartos"],
+                        "Material pared": Grafo.nodes[nodo1]["material_paredes"],
+                        "Material techo": Grafo.nodes[nodo1]["material_techo"],
+                        "Material piso": Grafo.nodes[nodo1]["material_piso"],
                     }
                     # print(dictTMP)
                     listCalles.append(dictTMP)
