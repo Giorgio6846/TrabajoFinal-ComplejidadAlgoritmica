@@ -44,13 +44,13 @@ async function requestDatos(){
    clearTable(table)
    generateTable(table, JSONdata["listCalles"])
 
-   graficoVivienda = updateChart(JSONdata["listStats"][0]["statsViviendas"], 'chartViviendas', 'Estadisticas de Viviendas', graficoVivienda);
-   graficoParedes = updateChart(JSONdata["listStats"][0]["statsParedes"], 'chartParedes', 'Estadisticas de Paredes', graficoParedes);
-   graficoTechos = updateChart(JSONdata["listStats"][0]["statsTecho"], 'chartTecho', 'Estadisticas de Techo', graficoTechos);
-   graficoPisos = updateChart(JSONdata["listStats"][0]["statsPiso"], 'chartPiso', 'Estadisticas de Piso', graficoPisos);
+   graficoVivienda = updateChart(JSONdata["listStats"]["statsViviendas"], 'chartViviendas', 'Estadisticas de Viviendas', graficoVivienda);
+   graficoParedes = updateChart(JSONdata["listStats"]["statsParedes"], 'chartParedes', 'Estadisticas de Paredes', graficoParedes);
+   graficoTechos = updateChart(JSONdata["listStats"]["statsTecho"], 'chartTecho', 'Estadisticas de Techo', graficoTechos);
+   graficoPisos = updateChart(JSONdata["listStats"]["statsPiso"], 'chartPiso', 'Estadisticas de Piso', graficoPisos);
 }
 
-async function generateTable(table, data){
+function generateTable(table, data){
    for (let element of data) {
       let row = table.insertRow();
       for (key in element) {
