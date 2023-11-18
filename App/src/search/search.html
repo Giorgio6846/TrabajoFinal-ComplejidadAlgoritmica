@@ -4,9 +4,11 @@
     <script src="../serverConnection/connect.js"></script>
     <script src = "search.js"></script>
     <link rel="stylesheet" type="text/css" href="search.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
+  
   <div class = "flex-container">
     <div class = "flex-SearchTable">
       <div id="divDepartamento">
@@ -56,9 +58,10 @@
 
     <div class = "flex-stats">
       <div class="sidebar">
-        <div class="stats">
-          STATS
-        </div>
+          <canvas id="chartViviendas"></canvas>
+          <canvas id="chartParedes"></canvas>
+          <canvas id="chartTecho"></canvas>
+          <canvas id="chartPiso"></canvas>
       </div>
 
   </div>
@@ -67,6 +70,7 @@
 
   <button id="indexPage" onClick>Regresar</button>
   <br>
+
 </body>
 
 <script>
@@ -130,6 +134,7 @@
 
     requestDatos()
   });
+
 </script>
 
 

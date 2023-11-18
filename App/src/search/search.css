@@ -12,21 +12,25 @@ body {
 }
 
 .sidebar {
+  height: 100%;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    width: 100%;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    
   }
   
   .stats {
     font-weight: bold;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centra el contenido */
     text-align: center; /* Centra horizontalmente el texto */
+
   }
 
 select{
@@ -65,6 +69,7 @@ select{
 .flex-stats{
   flex: 1;
   margin-right: 20px;
+
 }
 
 #Table {
@@ -89,4 +94,12 @@ background-color: #f2f2f2;
 position: sticky;
 top: 0;
 z-index: 1;
+
+
+
+}
+
+.flex-chart{
+  display: flex;
+  flex-wrap: wrap;
 }
