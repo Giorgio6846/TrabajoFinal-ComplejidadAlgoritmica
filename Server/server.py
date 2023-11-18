@@ -58,7 +58,7 @@ class Server:
             "listaProvincias": listProv,
             "listaDistritos": listDist,
             "listCalles": listCalles,
-            "listStats": [listStats],
+            "listStats": listStats,
         }
 
         JSONinf = json.dumps(dictInformacion)
