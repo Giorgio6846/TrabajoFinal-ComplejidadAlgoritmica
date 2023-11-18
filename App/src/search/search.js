@@ -10,15 +10,6 @@ async function requestDataServer(requestData){
    return receivedJSON
 }
 
-function removeOptions(selectElement) {
-   console.log(selectElement.options.length)
-
-   //var i, L = selectElement.options.length - 1;
-   //for (i = L; i >= 0; i--) {
-   //   selectElement.remove(i);
-   //}
-}
-
 function addItemsToSelect(selectItem, listSelect, JSONData){
    for (var i = 0; i < JSONData.length; i++)
    {
@@ -31,10 +22,6 @@ function addItemsToSelect(selectItem, listSelect, JSONData){
 }
 
 async function requestDatos(){
-   //removeOptions(document.getElementById("selectDepartamento"))
-   //removeOptions(document.getElementById("selectProvincia"))
-   //removeOptions(document.getElementById("selectDistrito"))
-
    var departamentoBuscar = localStorage.getItem('DepartamentoSelecionado')
    var provinciaBuscar = localStorage.getItem('ProvinciaSelecionado')
    var distritoBuscar = localStorage.getItem('DistritoSelecionado')

@@ -46,6 +46,7 @@
                 <th> Cantidad cuartos </th>
                 <th> Material pared </th>
                 <th> Material techo </th>
+                <th> Material piso </th>
               </tr>
             </thead>
           </table>
@@ -82,6 +83,13 @@
 </script>
 
 <script>
+  function clearSelectList(list) {
+    // when length is 0, the evaluation will return false.
+    while (list.options.length != 1) {
+      // continue to remove the first option until no options remain.
+      list.remove(1);
+    }
+  }
 
   var optionDepartamento = document.getElementById("selectDepartamento")
   var optionProvincia = document.getElementById("selectProvincia")
@@ -91,6 +99,9 @@
     console.log(event.target.value)
     localStorage.setItem('DepartamentoSelecionado', event.target.value)
     
+    clearSelectList(optionDistrito);
+    clearSelectList(optionProvincia);
+
     document.getElementById("selectProvincia").selectedIndex = -1;
     document.getElementById("selectDistrito").selectedIndex = -1;
 
@@ -104,6 +115,7 @@
     console.log(event.target.value)
     localStorage.setItem('ProvinciaSelecionado', event.target.value) 
 
+    clearSelectList(optionDistrito);
 
     document.getElementById("selectDistrito").selectedIndex = -1 ;
     localStorage.setItem('DistritoSelecionado', "NULL") 
@@ -113,14 +125,12 @@
 
   optionDistrito.addEventListener("change", function (event) {
     console.log(event.target.value)
-
+    
     localStorage.setItem('DistritoSelecionado', event.target.value)
 
     requestDatos()
   });
-
-
-
 </script>
+
 
 </html>
