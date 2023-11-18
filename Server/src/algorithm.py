@@ -2,7 +2,6 @@ import src.tools as tools
 
 startingNode = "Pais.Peru"
 
-
 def getProvincia(Grafo, Departamento):
     # Departamento = addDepartamentoString(Departamento)
     visited = []
@@ -19,7 +18,6 @@ def getProvincia(Grafo, Departamento):
                     provinciasDep.append(nodosConectados1)
 
     return provinciasDep
-
 
 def getAll(Grafo, Nivel):
     listDatos = []
@@ -67,38 +65,6 @@ def getAll(Grafo, Nivel):
         visited.append(item)
 
     return listDatos
-
-
-def getDistritoD(Grafo, departamento):
-    visited = []
-
-    visited.append(startingNode)
-    queue = getAll(Grafo, 1)
-
-    distritoDep = []
-
-    while queue:
-        item = queue.pop()
-
-        if item not in visited:
-            if item == departamento:
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Prov":
-                        queue.append(nodo1)
-
-            for nodo0, nodo1 in Grafo.edges(item):
-                if tools.getTipoNodo(nodo1) == "Dis":
-                    distritoDep.append(
-                        Grafo.nodes[nodo1]["provincia"]
-                        + "."
-                        + Grafo.nodes[nodo1]["Label"]
-                    )
-
-            visited.append(item)
-
-    print(distritoDep)
-    return distritoDep
-
 
 def getCalles(Grafo, messageJSON):
     listCalles = []
@@ -162,51 +128,6 @@ def getCalles(Grafo, messageJSON):
 
     return listCalles
 
-
-def getDistritoP(Grafo, provincia):
-    # Departamento = addDepartamentoString(Departamento)
-
-    visited = []
-
-    visited.append(startingNode)
-    queue = getAll(Grafo, 1)
-
-    distritoDep = []
-
-    """
-    for departamento in queue:
-        if departamento == Departamento:
-            for nodosConectados in Grafo.edges(departamento):
-                if nodosConectados[1] not in visited:
-                    provinciasDep.append(nodosConectados[1])
-    """
-
-    while queue:
-        item = queue.pop()
-
-        if item not in visited:
-            if item == provincia:
-                print(item)
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Dis":
-                        distritoDep.append(
-                            Grafo.nodes[nodo1]["provincia"]
-                            + "."
-                            + Grafo.nodes[nodo1]["Label"]
-                        )
-
-            for nodo0, nodo1 in Grafo.edges(item):
-                if (
-                    tools.getTipoNodo(nodo1) == "Dep"
-                    or tools.getTipoNodo(nodo1) == "Prov"
-                ):
-                    queue.append(nodo1)
-
-            visited.append(item)
-
-    return distritoDep
-
-
 def getDistrito(Grafo, messageJSON):
     visited = []
 
@@ -249,49 +170,6 @@ def getDistrito(Grafo, messageJSON):
         visited.append(item)
 
     return distritoList
-
-
-def getDistritoDP(Grafo, departamento, provincia):
-    # Departamento = addDepartamentoString(Departamento)
-
-    visited = []
-
-    visited.append(startingNode)
-    queue = getAll(Grafo, 1)
-
-    distritoDep = []
-
-    """
-    for departamento in queue:
-        if departamento == Departamento:
-            for nodosConectados in Grafo.edges(departamento):
-                if nodosConectados[1] not in visited:
-                    provinciasDep.append(nodosConectados[1])
-    """
-
-    while queue:
-        item = queue.pop()
-
-        if item not in visited:
-            if item == departamento:
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Prov":
-                        queue.append(nodo1)
-
-            if item == provincia:
-                print(item)
-                for nodo0, nodo1 in Grafo.edges(item):
-                    if tools.getTipoNodo(nodo1) == "Dis":
-                        distritoDep.append(
-                            Grafo.nodes[nodo1]["provincia"]
-                            + "."
-                            + Grafo.nodes[nodo1]["Label"]
-                        )
-
-            visited.append(item)
-
-    return distritoDep
-
 
 def getAllCalles(Grafo):
     listCalles = []

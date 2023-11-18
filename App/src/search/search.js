@@ -50,7 +50,7 @@ async function requestDatos(){
    graficoPisos = updateChart(JSONdata["listStats"][0]["statsPiso"], 'chartPiso', 'Estadisticas de Piso', graficoPisos);
 }
 
-function generateTable(table, data){
+async function generateTable(table, data){
    for (let element of data) {
       let row = table.insertRow();
       for (key in element) {
