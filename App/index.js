@@ -14,7 +14,7 @@ function mainWindow() {
     mainWin.loadFile("index.html");
 
 
-    mainWin.webContents.openDevTools();
+//    mainWin.webContents.openDevTools();
 }
 
 const mainMenu = [
