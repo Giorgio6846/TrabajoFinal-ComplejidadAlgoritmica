@@ -68,7 +68,6 @@ function clearTable(table){
 }
 
 
-// Calcular porcentajes
 function calcularPorcentajes(stats) {
     const total = Object.values(stats).reduce((acc, val) => acc + val, 0);
     const porcentajes = {};
@@ -78,18 +77,15 @@ function calcularPorcentajes(stats) {
     return porcentajes;
 }
 
-// Configurar y actualizar el gráfico
 function updateChart(stats, chartId, chartLabel, myChart) {
    const porcentajes = calcularPorcentajes(stats);
 
    const ctx = document.getElementById(chartId).getContext('2d');
 
-   // Eliminar el gráfico existente si hay uno
    if (myChart) {
        myChart.destroy();
    }
 
-   // Crear un nuevo gráfico con datos actualizados
    return new Chart(ctx, {
        type: 'bar',
        data: {
@@ -101,13 +97,11 @@ function updateChart(stats, chartId, chartLabel, myChart) {
                    'rgba(255, 99, 132, 0.2)',
                    'rgba(54, 162, 235, 0.2)',
                    'rgba(255, 206, 86, 0.2)',
-                   // Agrega más colores si hay más datos
                ],
                borderColor: [
                    'rgba(255, 99, 132, 1)',
                    'rgba(54, 162, 235, 1)',
                    'rgba(255, 206, 86, 1)',
-                   // Agrega más colores si hay más datos
                ],
                borderWidth: 1
            }]
@@ -127,6 +121,5 @@ let graficoVivienda;
 let graficoTechos;
 let graficoParedes;
 let graficoPisos;
-// Actualizar el gráfico según la categoría seleccionada
 
 requestDatos()

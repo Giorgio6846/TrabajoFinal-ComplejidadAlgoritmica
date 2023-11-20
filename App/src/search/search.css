@@ -28,9 +28,8 @@ body {
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centra el contenido */
-    text-align: center; /* Centra horizontalmente el texto */
-
+    transform: translate(-50%, -50%);
+    text-align: center; 
   }
 
 select{
@@ -40,7 +39,7 @@ select{
 }
 
 .line-break {
-    margin-top: 10px; /* Adds space between elements */
+    margin-top: 10px;
 }
 
 #indexPage {
@@ -73,8 +72,8 @@ select{
 }
 
 #Table {
-max-height: 700px; /* Define la altura máxima deseada */
-overflow-y: auto; /* Añade una barra de desplazamiento vertical si es necesario */
+max-height: 700px; 
+overflow-y: auto;
 margin-top: 1%;
 }
 
